@@ -1,13 +1,13 @@
 package com.chrisworks.paystackclient.synchronous;
 
 import com.chrisworks.paystackclient.WithConfiguredHttpClient;
-import com.chrisworks.paystackclient.synchronous.definitions.ApplePlayClient;
+import com.chrisworks.paystackclient.synchronous.definitions.ApplePayClient;
 import com.chrisworks.paystackclient.synchronous.definitions.PlanClient;
 import okhttp3.OkHttpClient;
 
 public interface Synchronous {
 
-    ApplePlayClient applePlayClient();
+    ApplePayClient applePlayClient();
     PlanClient planClient();
 
     final class Impl extends WithConfiguredHttpClient implements Synchronous {
@@ -17,8 +17,8 @@ public interface Synchronous {
         }
 
         @Override
-        public ApplePlayClient applePlayClient() {
-            return new ApplePlayClient.Impl(httpClient);
+        public ApplePayClient applePlayClient() {
+            return new ApplePayClient.Impl(httpClient);
         }
 
         @Override
