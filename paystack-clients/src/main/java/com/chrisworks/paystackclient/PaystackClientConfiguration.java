@@ -1,6 +1,7 @@
 package com.chrisworks.paystackclient;
 
 import com.chrisworks.paystackclient.domain.PaystackException;
+import com.chrisworks.paystackclient.domain.applepay.ApplePayRequest;
 import com.chrisworks.paystackclient.domain.applepay.ApplePayResponse;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
@@ -84,8 +85,7 @@ public class PaystackClientConfiguration {
     };
 
     public static void main(String[] args) {
-        final PaystackClient client = PaystackClientConfiguration
-                .buildPaystackClientFrom("Yay");
+        final PaystackClient client = PaystackClientConfiguration.buildPaystackClientFrom("Yay");
         ApplePayResponse.Multiple res = client.synchronous().applePlayClient().fetchMultiple(null);
         System.out.println(res.toString());
     }

@@ -19,15 +19,15 @@ class Example {
                 .buildPaystackClientFrom("<Your secret key here>");
 
         //Synchronous
-        ApplePlayResponse.Multiple syncRes = client
+        ApplePayResponse.Multiple syncRes = client
                 .synchronous()
-                .applePlayClient()
+                .applePayClient()
                 .findMultiple();
 
         //Asynchronous
-        CompletableFuture<ApplePlayResponse.Multiple> asyncRes = client
+        CompletableFuture<ApplePayResponse.Multiple> asyncRes = client
                 .asynchronous()
-                .applePlayClient()
+                .applePayClient()
                 .findMultiple();
     }
 }
