@@ -1,8 +1,13 @@
 package com.chrisworks.paystackclient;
 
+import com.chrisworks.paystackclient.domain.Amount;
+import com.chrisworks.paystackclient.domain.Currency;
+import com.chrisworks.paystackclient.domain.Interval;
 import com.chrisworks.paystackclient.domain.PaystackException;
-import com.chrisworks.paystackclient.domain.applepay.ApplePayRequest;
-import com.chrisworks.paystackclient.domain.applepay.ApplePayResponse;
+import com.chrisworks.paystackclient.domain.plan.CreatePlanRequest;
+import com.chrisworks.paystackclient.domain.plan.PlanListQueryParam;
+import com.chrisworks.paystackclient.domain.plan.PlanResponse;
+import com.chrisworks.paystackclient.domain.response.RichResponse;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Response;
@@ -12,10 +17,13 @@ import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.security.cert.X509Certificate;
 import java.time.Duration;
+import java.util.Map;
 import java.util.function.Function;
 
 public class PaystackClientConfiguration {
@@ -85,8 +93,23 @@ public class PaystackClientConfiguration {
     };
 
     public static void main(String[] args) {
+        //Usage sample
         final PaystackClient client = PaystackClientConfiguration.buildPaystackClientFrom("Yay");
-        ApplePayResponse.Multiple res = client.synchronous().applePlayClient().fetchMultiple(null);
-        System.out.println(res.toString());
+        RichResponse<PlanResponse.Single> res1 = client.synchronous()
+                .plan()
+                .create(new CreatePlanRequest("Sample Plan 9", Interval.DAILY,
+                        Amount.actualValue(BigDecimal.valueOf(10_000)).ofCurrency(Currency.NGN)));
+        System.out.println(res1);
+
+        RichResponse<PlanResponse.Multiple> res = client.synchronous()
+                .plan()
+                .fetchMultiple(new PlanListQueryParam(BigInteger.TEN, BigInteger.ONE)
+                        .amount(Amount.actualValue(BigDecimal.valueOf(100_000)).ofCurrency(Currency.NGN))
+                        .interval(Interval.BIANNUALLY)
+                        .status("approved"));
+
+        String json = res.raw();
+        PlanResponse.Multiple result = res.result();
+        Map<String, Object> objectMap = res.rawJsonAsMap();
     }
 }

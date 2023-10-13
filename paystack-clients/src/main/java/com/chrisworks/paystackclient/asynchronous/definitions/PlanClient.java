@@ -6,16 +6,17 @@ import com.chrisworks.paystackclient.asynchronous.definitions.Operations.FetchBy
 import com.chrisworks.paystackclient.asynchronous.definitions.Operations.FetchMultiple;
 import com.chrisworks.paystackclient.asynchronous.definitions.Operations.UpdateByIdOrCode;
 import com.chrisworks.paystackclient.domain.plan.CreatePlanRequest;
-import com.chrisworks.paystackclient.domain.plan.PlanListRequest;
+import com.chrisworks.paystackclient.domain.plan.PlanListQueryParam;
 import com.chrisworks.paystackclient.domain.plan.PlanResponse;
 import com.chrisworks.paystackclient.domain.plan.UpdatePlanRequest;
+import com.chrisworks.paystackclient.domain.response.RichResponse;
 import okhttp3.OkHttpClient;
 
 import java.util.concurrent.CompletionStage;
 
 public interface PlanClient extends
         Create<CreatePlanRequest, PlanResponse.Single>,
-        FetchMultiple<PlanListRequest, PlanResponse.Multiple>,
+        FetchMultiple<PlanListQueryParam, PlanResponse.Multiple>,
         FetchByIdOrCode<PlanResponse.Single>,
         UpdateByIdOrCode<UpdatePlanRequest, PlanResponse.Single> {
 
@@ -26,22 +27,22 @@ public interface PlanClient extends
         }
 
         @Override
-        public CompletionStage<PlanResponse.Single> create(CreatePlanRequest body) {
+        public CompletionStage<RichResponse<PlanResponse.Single>> create(CreatePlanRequest body) {
             return null;
         }
 
         @Override
-        public CompletionStage<PlanResponse.Multiple> fetchMultiple(PlanListRequest body) {
+        public CompletionStage<RichResponse<PlanResponse.Multiple>> fetchMultiple(PlanListQueryParam queryParam) {
             return null;
         }
 
         @Override
-        public CompletionStage<PlanResponse.Single> fetchByIdOrCode(String idOrCode) {
+        public CompletionStage<RichResponse<PlanResponse.Single>> fetchByIdOrCode(String idOrCode) {
             return null;
         }
 
         @Override
-        public CompletionStage<PlanResponse.Single> updateByIdOrCode(String idOrCode, UpdatePlanRequest body) {
+        public CompletionStage<RichResponse<PlanResponse.Single>> updateByIdOrCode(String idOrCode, UpdatePlanRequest body) {
             return null;
         }
     }

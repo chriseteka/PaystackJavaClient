@@ -7,8 +7,8 @@ import okhttp3.OkHttpClient;
 
 public interface Asynchronous {
 
-    ApplePlayClient applePlayClient();
-    PlanClient planClient();
+    ApplePlayClient applePlay();
+    PlanClient plan();
 
     final class Impl extends WithConfiguredHttpClient implements Asynchronous {
         public Impl(OkHttpClient httpClient) {
@@ -16,12 +16,12 @@ public interface Asynchronous {
         }
 
         @Override
-        public ApplePlayClient applePlayClient() {
+        public ApplePlayClient applePlay() {
             return new ApplePlayClient.Impl(httpClient);
         }
 
         @Override
-        public PlanClient planClient() {
+        public PlanClient plan() {
             return new PlanClient.Impl(httpClient);
         }
     }

@@ -14,4 +14,16 @@ public class CreatePlanRequest implements RequestBody<CreatePlanRequest> {
         this.interval = interval.name().toLowerCase();
         this.amount = amount.getUnitValue();
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getInterval() {
+        return interval;
+    }
+
+    public String getAmount() {
+        return amount;
+    }
 }

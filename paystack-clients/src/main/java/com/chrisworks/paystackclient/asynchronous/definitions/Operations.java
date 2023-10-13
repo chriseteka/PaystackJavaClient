@@ -1,10 +1,11 @@
 package com.chrisworks.paystackclient.asynchronous.definitions;
 
-import com.chrisworks.paystackclient.domain.request.PaystackListPagedRequest;
-import com.chrisworks.paystackclient.domain.request.PaystackListUnPagedRequest;
+import com.chrisworks.paystackclient.domain.request.PaystackListPagedQueryParam;
+import com.chrisworks.paystackclient.domain.request.PaystackListUnPagedQueryParam;
 import com.chrisworks.paystackclient.domain.request.RequestBody;
 import com.chrisworks.paystackclient.domain.response.PaystackMultiResponse;
 import com.chrisworks.paystackclient.domain.response.PaystackSingleResponse;
+import com.chrisworks.paystackclient.domain.response.RichResponse;
 
 import java.util.concurrent.CompletionStage;
 
@@ -15,28 +16,28 @@ final class Operations {
     @FunctionalInterface
     interface Create<Req extends RequestBody<?>, Res extends PaystackSingleResponse<?>> {
 
-        CompletionStage<Res> create(Req body);
+        CompletionStage<RichResponse<Res>> create(Req body);
     }
 
     @FunctionalInterface
-    interface FetchMultiple<Req extends PaystackListPagedRequest, Res extends PaystackMultiResponse<?>> {
+    interface FetchMultiple<Req extends PaystackListPagedQueryParam, Res extends PaystackMultiResponse<?>> {
 
-        CompletionStage<Res> fetchMultiple(Req body);
+        CompletionStage<RichResponse<Res>> fetchMultiple(Req queryParam);
     }
 
     @FunctionalInterface
-    interface FetchMultipleUnPaged<Req extends PaystackListUnPagedRequest, Res extends PaystackSingleResponse<?>> {
+    interface FetchMultipleUnPaged<Req extends PaystackListUnPagedQueryParam, Res extends PaystackSingleResponse<?>> {
 
-        Res fetchMultiple(Req body);
+        CompletionStage<RichResponse<Res>> fetchMultiple(Req queryParam);
     }
 
     @FunctionalInterface
     interface FetchByIdOrCode<Res extends PaystackSingleResponse<?>> {
-        CompletionStage<Res> fetchByIdOrCode(String idOrCode);
+        CompletionStage<RichResponse<Res>> fetchByIdOrCode(String idOrCode);
     }
 
     @FunctionalInterface
     interface UpdateByIdOrCode<Req extends RequestBody<?>, Res extends PaystackSingleResponse<?>> {
-        CompletionStage<Res> updateByIdOrCode(String idOrCode, Req body);
+        CompletionStage<RichResponse<Res>> updateByIdOrCode(String idOrCode, Req body);
     }
 }

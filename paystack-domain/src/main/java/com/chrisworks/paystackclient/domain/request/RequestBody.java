@@ -1,16 +1,23 @@
 package com.chrisworks.paystackclient.domain.request;
 
+import com.chrisworks.paystackclient.domain.PaystackException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import static com.chrisworks.paystackclient.domain.SerialisationUtil.objectMapper;
+
 public interface RequestBody<T> {
 
-    ObjectMapper o = new ObjectMapper();
-    default String toJson() {
+    @SuppressWarnings("unchecked")
+    private T raw() {
+        return (T) this;
+    }
+
+    default String json() {
         try {
-            return o.writeValueAsString(((T) this)); //Gson serializing stuff
+            return objectMapper.writeValueAsString(raw());
         } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
+            throw new PaystackException(e);
         }
     }
 }

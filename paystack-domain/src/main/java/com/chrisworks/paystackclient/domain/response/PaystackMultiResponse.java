@@ -16,5 +16,7 @@ public interface PaystackMultiResponse<T extends ResponseDataDefaults> extends R
         BigInteger page();
         BigInteger pageCount();
 
+        record Impl(BigInteger total, BigInteger skipped, BigInteger perPage, BigInteger page, BigInteger pageCount) implements PageMetaInfo {}
+
     }
 }

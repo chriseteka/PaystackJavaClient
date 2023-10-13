@@ -6,5 +6,9 @@ public enum Interval {
     MONTHLY,
     QUARTERLY,
     BIANNUALLY,
-    ANNUALLY,
+    ANNUALLY;
+
+    public static Interval valueOfIgnoreCase(String str) {
+        return valueOf(str.toUpperCase());
+    }
 }

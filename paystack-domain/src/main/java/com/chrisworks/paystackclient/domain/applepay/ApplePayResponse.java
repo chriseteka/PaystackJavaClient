@@ -2,6 +2,7 @@ package com.chrisworks.paystackclient.domain.applepay;
 
 import com.chrisworks.paystackclient.domain.response.PaystackSingleResponse;
 import com.chrisworks.paystackclient.domain.response.ResponseDataDefaults;
+import com.chrisworks.paystackclient.domain.response.RichResponse;
 
 import java.math.BigInteger;
 import java.time.ZonedDateTime;

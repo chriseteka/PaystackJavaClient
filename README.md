@@ -12,6 +12,8 @@ Example:
 ```java
 // Imports here
 
+import java.util.concurrent.CompletableFuture;
+
 class Example {
 
     public static void main(String[] args) {
@@ -19,16 +21,38 @@ class Example {
                 .buildPaystackClientFrom("<Your secret key here>");
 
         //Synchronous
-        ApplePayResponse.Multiple syncRes = client
-                .synchronous()
-                .applePayClient()
-                .findMultiple();
+        RichResponse<PlanResponse.Single> syncRes = client.synchronous()
+                .plan()
+                .create(new CreatePlanRequest("Sample Plan 9", Interval.DAILY,
+                        Amount.actualValue(BigDecimal.valueOf(10_000)).ofCurrency(Currency.NGN)));
+
+        //fetch plans with query param
+        RichResponse<PlanResponse.Multiple> res = client.synchronous()
+                .plan()
+                .fetchMultiple(new PlanListQueryParam(BigInteger.TEN, BigInteger.ONE)
+                        .amount(Amount.actualValue(BigDecimal.valueOf(100_000)).ofCurrency(Currency.NGN))
+                        .interval(Interval.BIANNUALLY)
+                        .status("approved"));
+        
+        //fetch plans without query param
+        RichResponse<PlanResponse.Multiple> res = client.synchronous()
+                .plan()
+                .fetchMultiple(null);
+
+        //fetch single plan
+        RichResponse<PlanResponse.Single> res = client.synchronous()
+                .plan()
+                .fetchByIdOrCode("id001");
+        
+        String json = res.raw();
+        PlanResponse.Multiple result = res.result();
+        Map<String, Object> objectMap = res.rawJsonAsMap();
 
         //Asynchronous
-        CompletableFuture<ApplePayResponse.Multiple> asyncRes = client
-                .asynchronous()
-                .applePayClient()
-                .findMultiple();
+        CompletableFuture<RichResponse<PlanResponse.Single>> asyncRes = client.asynchronous()
+                .plan()
+                .create(new CreatePlanRequest("Sample Plan 9", Interval.ANNUALLY,
+                        Amount.actualValue(BigDecimal.valueOf(1_000_000)).ofCurrency(Currency.NGN)));
     }
 }
 ```

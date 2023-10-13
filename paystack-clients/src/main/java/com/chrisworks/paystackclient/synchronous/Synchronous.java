@@ -7,8 +7,8 @@ import okhttp3.OkHttpClient;
 
 public interface Synchronous {
 
-    ApplePayClient applePlayClient();
-    PlanClient planClient();
+    ApplePayClient applePlay();
+    PlanClient plan();
 
     final class Impl extends WithConfiguredHttpClient implements Synchronous {
 
@@ -17,12 +17,12 @@ public interface Synchronous {
         }
 
         @Override
-        public ApplePayClient applePlayClient() {
+        public ApplePayClient applePlay() {
             return new ApplePayClient.Impl(httpClient);
         }
 
         @Override
-        public PlanClient planClient() {
+        public PlanClient plan() {
             return new PlanClient.Impl(httpClient);
         }
     }
