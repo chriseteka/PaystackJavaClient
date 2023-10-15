@@ -20,12 +20,4 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <distributionManagement>
-        <repository>
-            <id>github</id>
-            <name>chriseteka</name>
-            <url>https://maven.pkg.github.com/chriseteka/paystackjavaclient</url>
-        </repository>
-    </distributionManagement>
-
 </project>
