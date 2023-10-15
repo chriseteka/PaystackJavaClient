@@ -1,0 +1,45 @@
+name: PaystackJavaClient Maven CI
+
+on:
+  push:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      PUSH_PACKAGES: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+
+    steps:
+      - name: Step 1 - Checkout Branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Step 2 - Cache local Maven repository
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
+      - name: Step 3 - Setup JDK 17
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: 17
+          cache: 'maven'
+
+      - name: Step 4 - Build Project with Maven
+        run: ./mvnw -B package --file pom.xml
+
+      - name: Step 5 - Publish to GitHub Packages
+        if: contains(env.PUSH_PACKAGES, true)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+        run: ./mvnw -DskipTests deploy

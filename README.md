@@ -2,6 +2,9 @@
 
 > A typed Java Rest client interface for [Paystack APIs](https://paystack.com/docs/api/)
 
+[![Paystack Java Client Maven CI](https://github.com/chriseteka/PaystackJavaClient/actions/workflows/maven-action.yml/badge.svg)](https://github.com/chriseteka/PaystackJavaClient/actions/workflows/maven-action.yml)
+
+
 The Client comes in 3 flavors:
 1. Synchronous - Responses in POJO
 2. Asynchronous - Responses in CompletableFuture

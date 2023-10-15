@@ -94,22 +94,20 @@ public class PaystackClientConfiguration {
 
     public static void main(String[] args) {
         //Usage sample
-        final PaystackClient client = PaystackClientConfiguration.buildPaystackClientFrom("Yay");
-        RichResponse<PlanResponse.Single> res1 = client.synchronous()
-                .plan()
-                .create(new CreatePlanRequest("Sample Plan 9", Interval.DAILY,
-                        Amount.actualValue(BigDecimal.valueOf(10_000)).ofCurrency(Currency.NGN)));
-        System.out.println(res1);
+        final PaystackClient client = PaystackClientConfiguration.buildPaystackClientFrom("sk_test_c33ddd838c1dfd9cf30d983a1238224172e702a4");
+        client.synchronous();
+//        RichResponse<PlanResponse.Single> res1 = client.synchronous()
+//                .plan()
+//                .create(new CreatePlanRequest("Sample Plan 9", Interval.DAILY,
+//                        Amount.actualValue(BigDecimal.valueOf(10_000)).ofCurrency(Currency.NGN)));
+//        System.out.println(res1);
 
-        RichResponse<PlanResponse.Multiple> res = client.synchronous()
+        RichResponse<PlanResponse.Single> res = client.synchronous()
                 .plan()
-                .fetchMultiple(new PlanListQueryParam(BigInteger.TEN, BigInteger.ONE)
-                        .amount(Amount.actualValue(BigDecimal.valueOf(100_000)).ofCurrency(Currency.NGN))
-                        .interval(Interval.BIANNUALLY)
-                        .status("approved"));
+                .fetchByIdOrCode("PLN_16x08vyy3bu2h7x");
 
-        String json = res.raw();
-        PlanResponse.Multiple result = res.result();
-        Map<String, Object> objectMap = res.rawJsonAsMap();
+//        String json = res.raw();
+//        PlanResponse.Multiple result = res.result();
+//        Map<String, Object> objectMap = res.rawJsonAsMap();
     }
 }
