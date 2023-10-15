@@ -36,10 +36,10 @@ jobs:
           cache: 'maven'
 
       - name: Step 4 - Build Project with Maven
-        run: ./mvnw -B package --file pom.xml
+        run: mvn -B package --file pom.xml
 
       - name: Step 5 - Publish to GitHub Packages
         if: contains(env.PUSH_PACKAGES, true)
         env:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
-        run: ./mvnw -DskipTests deploy
+        run: mvn -DskipTests deploy
