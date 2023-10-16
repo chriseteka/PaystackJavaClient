@@ -51,13 +51,6 @@
         <url>git@github.com:chriseteka/PaystackJavaClient.git</url>
         <tag>HEAD</tag>
     </scm>
-<!--    <distributionManagement>-->
-<!--        <repository>-->
-<!--            <id>github</id>-->
-<!--            <name>chriseteka</name>-->
-<!--            <url>https://maven.pkg.github.com/chriseteka/paystackjavaclient</url>-->
-<!--        </repository>-->
-<!--    </distributionManagement>-->
 
     <build>
         <plugins>
