@@ -44,6 +44,7 @@ jobs:
           MAVEN_SERVER_ID: maven.pkg.github.com/chriseteka/paystackjavaclient
           GITHUB_USERNAME: chriseteka
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+          JAVA_HOME: /usr/lib/jvm/java-17-openjdk/
         uses: mg-smartrent/github-actions-maven-release@master
         with:
           release-branch-name: "main"
