@@ -42,4 +42,4 @@ jobs:
         if: contains(env.PUSH_PACKAGES, true)
         env:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
-        run: mvn -B -DskipTests deploy --file paystack-clients/pom.xml
+        run: mvn deploy -pl paystack-clients
