@@ -41,5 +41,21 @@ jobs:
       - name: Step 5 - Publish to GitHub Packages
         if: contains(env.PUSH_PACKAGES, true)
         env:
+          MAVEN_SERVER_ID: maven.pkg.github.com/chriseteka/paystackjavaclient
+          GITHUB_USERNAME: chriseteka
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
-        run: mvn deploy -pl paystack-clients
+        uses: mg-smartrent/github-actions-maven-release@master
+        with:
+          release-branch-name: "master"
+          git-release-bot-name: "ReleaseBot"
+          git-release-bot-email: "release.bot@smartrent.com"
+          access-token: ${GITHUB_TOKEN}
+
+          # Release
+          maven-repo-server-id: ${MAVEN_SERVER_ID}
+          maven-repo-server-username: ${GITHUB_USERNAME}
+          maven-repo-server-password: ${GITHUB_TOKEN}
+
+          # Publish artifacts to GitHub Packages
+          maven-release-publish: "true"
+          maven-snapshot-publish: "true"
