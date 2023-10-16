@@ -49,7 +49,7 @@
         <connection>scm:git:${project.scm.url}</connection>
         <developerConnection>scm:git:${project.scm.url}</developerConnection>
         <url>https://github.com/chriseteka/PaystackJavaClient.git</url>
-        <tag>PaystackJavaClient-1.0.0</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <distributionManagement>
