@@ -51,8 +51,8 @@ jobs:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
           maven-args: "-Dmaven.javadoc.skip=true -DskipTests -DskipITs -Ddockerfile.skip -DdockerCompose.skip"
 
-#      - name: Step 6 - Publish to GitHub Packages
-#        if: contains(env.PUSH_PACKAGES, true)
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
-#        run: mvn deploy -pl paystack-clients
+      - name: Step 6 - Publish to GitHub Packages
+        if: contains(env.PUSH_PACKAGES, true)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+        run: mvn deploy -pl paystack-clients
