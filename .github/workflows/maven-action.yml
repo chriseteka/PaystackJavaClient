@@ -46,7 +46,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
         uses: mg-smartrent/github-actions-maven-release@master
         with:
-          release-branch-name: "master"
+          release-branch-name: "main"
           git-release-bot-name: "ReleaseBot"
           git-release-bot-email: "release.bot@smartrent.com"
           access-token: ${GITHUB_TOKEN}
