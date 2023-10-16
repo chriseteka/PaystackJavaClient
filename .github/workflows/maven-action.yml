@@ -12,7 +12,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      PUSH_PACKAGES: ${{ github.event_name == 'push' && github.ref == 'refs/heads/develop' }}
+      PUSH_PACKAGES: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
 
     steps:
       - name: Step 1 - Checkout Branch
@@ -41,11 +41,10 @@ jobs:
       - name: Step 5 - Release to GitHub
         if: contains(env.PUSH_PACKAGES, true)
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
           JAVA_HOME: /usr/lib/jvm/java-17-openjdk/
         uses: qcastel/github-actions-maven-release@master
         with:
-          release-branch-name: "develop"
+          release-branch-name: "main"
           git-release-bot-name: "ReleaseBot"
           m2-home-folder: '~/.m2/repository'
           access-token: ${{ secrets.GH_PAT }}
