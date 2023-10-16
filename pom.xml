@@ -48,7 +48,7 @@
     <scm>
         <connection>scm:git:${scm.url}</connection>
         <developerConnection>scm:git:${scm.url}</developerConnection>
-        <url>https://github.com/chriseteka/PaystackJavaClient.git</url>
+        <url>git@github.com:chriseteka/PaystackJavaClient.git</url>
         <tag>HEAD</tag>
     </scm>
     <distributionManagement>
@@ -58,5 +58,17 @@
             <url>https://maven.pkg.github.com/chriseteka/paystackjavaclient</url>
         </repository>
     </distributionManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>3.0.0-M6</version>
+                <configuration>
+                    <scmCommentPrefix>[ci skip]</scmCommentPrefix>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
