@@ -12,7 +12,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      PUSH_PACKAGES: ${{ github.event_name == 'push' && github.ref == 'refs/heads/develop' }}
+      CREATE_RELEASE: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+      PUBLISH_PACKAGE: ${{ github.event_name == 'push' && github.ref == 'refs/heads/release' }}
 
     steps:
       - name: Step 1 - Checkout Branch
@@ -39,14 +40,19 @@ jobs:
         run: mvn -B package --file pom.xml
 
       - name: Step 5 - Release to GitHub
-        if: contains(env.PUSH_PACKAGES, true)
+        if: contains(env.CREATE_RELEASE, true)
         env:
           JAVA_HOME: /usr/lib/jvm/java-17-openjdk/
         uses: qcastel/github-actions-maven-release@master
         with:
-          release-branch-name: "develop"
+          release-branch-name: "main"
           git-release-bot-name: "ReleaseBot"
           m2-home-folder: '~/.m2/repository'
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-          access-token: ${{ secrets.GH_PAT }}
           maven-args: "-Dmaven.javadoc.skip=true -DskipTests -DskipITs -Ddockerfile.skip -DdockerCompose.skip"
+
+      - name: Step 6 - Publish to GitHub Packages
+        if: contains(env.PUBLISH_PACKAGE, true)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+        run: mvn deploy -pl paystack-clients
