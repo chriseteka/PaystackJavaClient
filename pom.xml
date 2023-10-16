@@ -56,7 +56,7 @@
         <repository>
             <id>github</id>
             <name>chriseteka</name>
-            <url>${project.scm.url}</url>
+            <url>https://maven.pkg.github.com/chriseteka/paystackjavaclient</url>
         </repository>
     </distributionManagement>
 
