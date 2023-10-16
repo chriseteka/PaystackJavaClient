@@ -52,16 +52,12 @@
         <tag>HEAD</tag>
     </scm>
 
-    <build>
-        <plugins>
-            <plugin>
-                <artifactId>maven-release-plugin</artifactId>
-                <version>3.0.0-M6</version>
-                <configuration>
-                    <scmCommentPrefix>[ci skip]</scmCommentPrefix>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>chriseteka</name>
+            <url>${project.scm.url}</url>
+        </repository>
+    </distributionManagement>
 
 </project>
