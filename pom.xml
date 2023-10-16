@@ -52,6 +52,14 @@
         <tag>HEAD</tag>
     </scm>
 
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>chriseteka</name>
+            <url>${project.scm.url}</url>
+        </repository>
+    </distributionManagement>
+
     <build>
         <plugins>
             <plugin>
