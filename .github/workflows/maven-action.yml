@@ -48,4 +48,4 @@ jobs:
           git-release-bot-name: "ReleaseBot"
           m2-home-folder: '~/.m2/repository'
           access-token: ${{ secrets.GH_PAT }}
-          maven-args: "-Dmaven.javadoc.skip=true -DskipTests -DskipITs -Ddockerfile.skip -DdockerCompose.skip"
+          maven-args: "-Dmaven.resolver.transport=wagon -Dmaven.javadoc.skip=true -DskipTests -DskipITs -Ddockerfile.skip -DdockerCompose.skip"
