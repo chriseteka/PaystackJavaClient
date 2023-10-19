@@ -4,7 +4,7 @@
 
     <groupId>com.chrisworks.paystackclient</groupId>
     <artifactId>PaystackJavaClient</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.1</version>
     <packaging>pom</packaging>
     <modules>
         <module>paystack-domain</module>
@@ -12,7 +12,7 @@
     </modules>
 
     <properties>
-        <revision>1.0.1-SNAPSHOT</revision>
+        <revision>1.0.1</revision>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -49,7 +49,7 @@
         <connection>scm:git:${project.scm.url}</connection>
         <developerConnection>scm:git:${project.scm.url}</developerConnection>
         <url>https://github.com/chriseteka/PaystackJavaClient.git</url>
-        <tag>HEAD</tag>
+        <tag>PaystackJavaClient-1.0.1</tag>
     </scm>
 
     <distributionManagement>
