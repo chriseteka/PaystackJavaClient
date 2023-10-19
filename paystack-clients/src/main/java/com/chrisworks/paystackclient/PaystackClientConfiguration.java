@@ -1,13 +1,10 @@
 package com.chrisworks.paystackclient;
 
-import com.chrisworks.paystackclient.domain.Amount;
-import com.chrisworks.paystackclient.domain.Currency;
-import com.chrisworks.paystackclient.domain.Interval;
+
 import com.chrisworks.paystackclient.domain.PaystackException;
-import com.chrisworks.paystackclient.domain.plan.CreatePlanRequest;
-import com.chrisworks.paystackclient.domain.plan.PlanListQueryParam;
-import com.chrisworks.paystackclient.domain.plan.PlanResponse;
 import com.chrisworks.paystackclient.domain.response.RichResponse;
+import com.chrisworks.paystackclient.domain.transaction.TransactionResponse;
+import com.chrisworks.paystackclient.domain.transaction.TransactionTotalResponse;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Response;
@@ -17,13 +14,11 @@ import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.security.cert.X509Certificate;
 import java.time.Duration;
-import java.util.Map;
 import java.util.function.Function;
 
 public class PaystackClientConfiguration {
@@ -94,17 +89,35 @@ public class PaystackClientConfiguration {
 
     public static void main(String[] args) {
         //Usage sample
-        final PaystackClient client = PaystackClientConfiguration.buildPaystackClientFrom("sk_test_c33ddd838c1dfd9cf30d983a1238224172e702a4");
-        client.synchronous();
-//        RichResponse<PlanResponse.Single> res1 = client.synchronous()
+        final PaystackClient client = PaystackClientConfiguration.buildPaystackClientFrom("<Your secret key here>");
+//        RichResponse<PlanResponse.Single> res1 = client
 //                .plan()
-//                .create(new CreatePlanRequest("Sample Plan 9", Interval.DAILY,
-//                        Amount.actualValue(BigDecimal.valueOf(10_000)).ofCurrency(Currency.NGN)));
+//                .createPlan(new CreatePlanRequest("Sample Plan 9", Interval.DAILY,
+//                        Amount.actualValue(BigDecimal.valueOf(10_000)).ofCurrency(Currency.NGN)))
+//                .execute();
 //        System.out.println(res1);
 
-        RichResponse<PlanResponse.Single> res = client.synchronous()
-                .plan()
-                .fetchByIdOrCode("PLN_16x08vyy3bu2h7x");
+//        Void res = client
+//                .plan()
+//                .fetchPlan("PLN_16x08vyy3bu2h7x")
+//                .executeAsync()
+//                .thenAccept(re -> System.out.println(re.result()))
+//                .join();
+
+        RichResponse<TransactionResponse.Single> transactions = client
+                .transaction()
+                .fetchTransaction(BigInteger.valueOf(3200117924L))
+                .execute();
+
+        RichResponse<TransactionTotalResponse.Single> total = client.transaction().transactionTotals(null).execute();
+
+
+//        RichResponse<PlanResponse.Single> res2 = client
+//                .plan()
+//                .fetchPlan("PLN_16x08vyy3bu2h7x")
+//                .execute();
+        System.out.println(transactions);
+        System.out.println(total);
 
 //        String json = res.raw();
 //        PlanResponse.Multiple result = res.result();

@@ -24,38 +24,43 @@ class Example {
                 .buildPaystackClientFrom("<Your secret key here>");
 
         //Synchronous
-        RichResponse<PlanResponse.Single> syncRes = client.synchronous()
+        RichResponse<PlanResponse.Single> syncRes = client
                 .plan()
-                .create(new CreatePlanRequest("Sample Plan 9", Interval.DAILY,
-                        Amount.actualValue(BigDecimal.valueOf(10_000)).ofCurrency(Currency.NGN)));
+                .createPlan(new CreatePlanRequest("Sample Plan 9", Interval.DAILY,
+                        Amount.actualValue(BigDecimal.valueOf(10_000)).ofCurrency(Currency.NGN)))
+                .execute(); //sync call is made at this point
 
         //fetch plans with query param
-        RichResponse<PlanResponse.Multiple> res = client.synchronous()
+        RichResponse<PlanResponse.Multiple> res = client
                 .plan()
-                .fetchMultiple(new PlanListQueryParam(BigInteger.TEN, BigInteger.ONE)
+                .listPlans(new PlanListQueryParam(BigInteger.TEN, BigInteger.ONE)
                         .amount(Amount.actualValue(BigDecimal.valueOf(100_000)).ofCurrency(Currency.NGN))
                         .interval(Interval.BIANNUALLY)
-                        .status("approved"));
+                        .status("approved"))
+                .execute();
         
         //fetch plans without query param
-        RichResponse<PlanResponse.Multiple> res = client.synchronous()
+        RichResponse<PlanResponse.Multiple> res = client
                 .plan()
-                .fetchMultiple(null);
+                .listPlans(null)
+                .execute();
 
         //fetch single plan
-        RichResponse<PlanResponse.Single> res = client.synchronous()
+        RichResponse<PlanResponse.Single> res = client
                 .plan()
-                .fetchByIdOrCode("id001");
+                .fetchPlan("id001")
+                .execute();
         
         String json = res.raw();
         PlanResponse.Multiple result = res.result();
         Map<String, Object> objectMap = res.rawJsonAsMap();
 
         //Asynchronous
-        CompletableFuture<RichResponse<PlanResponse.Single>> asyncRes = client.asynchronous()
+        CompletableFuture<RichResponse<PlanResponse.Single>> asyncRes = client
                 .plan()
-                .create(new CreatePlanRequest("Sample Plan 9", Interval.ANNUALLY,
-                        Amount.actualValue(BigDecimal.valueOf(1_000_000)).ofCurrency(Currency.NGN)));
+                .createPlan(new CreatePlanRequest("Sample Plan 9", Interval.ANNUALLY,
+                        Amount.actualValue(BigDecimal.valueOf(1_000_000)).ofCurrency(Currency.NGN)))
+                .executeAsync();
     }
 }
 ```

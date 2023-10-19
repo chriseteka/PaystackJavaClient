@@ -17,23 +17,28 @@ public final class UpdatePlanRequest extends CreatePlanRequest {
         super(name, interval, amount);
     }
 
-    public void setDescription(String description) {
+    public UpdatePlanRequest description(String description) {
         this.description = description;
+        return this;
     }
 
-    public void setSend_invoices(boolean send_invoices) {
+    public UpdatePlanRequest send_invoices(boolean send_invoices) {
         this.send_invoices = send_invoices;
+        return this;
     }
 
-    public void setSend_sms(String send_sms) {
+    public UpdatePlanRequest send_sms(String send_sms) {
         this.send_sms = send_sms;
+        return this;
     }
 
-    public void setCurrency(String currency) {
+    public UpdatePlanRequest currency(String currency) {
         this.currency = currency;
+        return this;
     }
 
-    public void setInvoice_limit(BigInteger invoice_limit) {
+    public UpdatePlanRequest invoice_limit(BigInteger invoice_limit) {
         this.invoice_limit = invoice_limit;
+        return this;
     }
 }

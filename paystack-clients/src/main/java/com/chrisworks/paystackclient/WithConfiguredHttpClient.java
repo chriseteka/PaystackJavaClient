@@ -1,17 +1,9 @@
 package com.chrisworks.paystackclient;
 
-import com.chrisworks.paystackclient.domain.PaystackException;
 import com.chrisworks.paystackclient.domain.request.QueryParamBuilder;
-import com.chrisworks.paystackclient.domain.response.RichResponse;
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
+import okhttp3.*;
 
-import java.io.IOException;
 import java.util.Optional;
-
-import static com.chrisworks.paystackclient.domain.SerialisationUtil.objectMapper;
 
 public abstract class WithConfiguredHttpClient {
 
@@ -27,16 +19,7 @@ public abstract class WithConfiguredHttpClient {
                 .orElse("");
     }
 
-    protected <T> RichResponse<T> execute(Request request, Class<T> responseType) {
-        try(final Response response = httpClient.newCall(request).execute()) {
-            final String responseBody = response.body().string();
-            if (response.isSuccessful()) {
-                return new RichResponse.Impl<>(objectMapper.readValue(responseBody, responseType), responseBody);
-            }
-            throw new PaystackException(
-                    objectMapper.readValue(responseBody, PaystackException.Model.class), response.code());
-        } catch (IOException e) {
-            throw new PaystackException(e);
-        }
+    protected <T> ExecutionSpec<T> execSpec(Request request, Class<T> returnType) {
+        return new ExecutionSpec<>(request, returnType, httpClient);
     }
 }
