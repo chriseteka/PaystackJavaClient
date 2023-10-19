@@ -22,7 +22,23 @@ jobs:
           java-version: 17
           cache: 'maven'
 
-      - name: Publish package
+      - name: Configure Maven settings.xml
+        uses: s4u/maven-settings-action@v2.8.0
+        with:
+          githubServer: false
+          servers: |
+            [{
+              "id": "github",
+              "username": "${{ github.actor }}",
+              "password": "${{ secrets.GH_PAT }}"
+            }]
+
+      - name: Publish Domain Package
+        run: mvn -Drevision=1.0.5 -B deploy -pl paystack-domain
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+
+      - name: Publish Client Package
         run: mvn -Drevision=1.0.5 -B deploy -pl paystack-clients
         env:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
