@@ -41,12 +41,20 @@ jobs:
       - name: Step 5 - Release to GitHub
         if: contains(env.PUSH_PACKAGES, true)
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
           JAVA_HOME: /usr/lib/jvm/java-17-openjdk/
         uses: qcastel/github-actions-maven-release@master
         with:
+          skip-perform: true
           release-branch-name: "main"
           git-release-bot-name: "ReleaseBot"
           m2-home-folder: '~/.m2/repository'
           access-token: ${{ secrets.GH_PAT }}
-          maven-args: "-Dmaven.resolver.transport=wagon -Dmaven.javadoc.skip=true -DskipTests -DskipITs -Ddockerfile.skip -DdockerCompose.skip"
+          maven-args: "-Dmaven.deploy.skip=true -Dmaven.resolver.transport=wagon -Dmaven.javadoc.skip=true -DskipTests -DskipITs -Ddockerfile.skip -DdockerCompose.skip"
+
+      - name: Release Dispatch Action
+        if: contains(env.PUSH_PACKAGES, true)
+        uses: peter-evans/repository-dispatch@v1
+        with:
+          token: ${{ secrets.GH_PAT }}
+          event-type: execute-publish
+          client-payload: '{"sha": "${{ github.sha }}"}'
