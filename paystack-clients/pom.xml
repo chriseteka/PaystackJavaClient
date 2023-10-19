@@ -3,7 +3,7 @@
     <parent>
         <groupId>com.chrisworks.paystackclient</groupId>
         <artifactId>PaystackJavaClient</artifactId>
-        <version>1.0.5-SNAPSHOT</version>
+        <version>1.0.5</version>
     </parent>
     <artifactId>paystack-clients</artifactId>
     <name>paystack-clients</name>
