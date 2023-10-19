@@ -48,12 +48,13 @@ jobs:
           release-branch-name: "main"
           git-release-bot-name: "ReleaseBot"
           m2-home-folder: '~/.m2/repository'
+          maven-project-folder: "paystack-domain/"
           access-token: ${{ secrets.GH_PAT }}
           maven-args: "-Dmaven.deploy.skip=true -Dmaven.resolver.transport=wagon -Dmaven.javadoc.skip=true -DskipTests -DskipITs -Ddockerfile.skip -DdockerCompose.skip"
 
       - name: Release Dispatch Action
         if: contains(env.PUSH_PACKAGES, true)
-        uses: peter-evans/repository-dispatch@v1
+        uses: peter-evans/repository-dispatch@v2
         with:
           token: ${{ secrets.GH_PAT }}
           event-type: execute-publish
