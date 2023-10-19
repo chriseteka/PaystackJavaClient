@@ -1,4 +1,4 @@
-name: PaystackJavaClient Maven CI
+name: PaystackJavaClient Maven CD
 
 on:
   repository_dispatch:
