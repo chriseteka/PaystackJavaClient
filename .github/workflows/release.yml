@@ -23,6 +23,6 @@ jobs:
           cache: 'maven'
 
       - name: Publish package
-        run: mvn -B deploy -pl paystack-clients
+        run: mvn -Drevision=1.0.5 -B deploy -pl paystack-clients
         env:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
