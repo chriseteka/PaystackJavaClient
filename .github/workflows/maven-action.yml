@@ -38,7 +38,7 @@ jobs:
       - name: Step 4 - Build Project with Maven
         run: mvn -B package --file pom.xml
 
-      - name: Step 5 - Release to GitHub
+      - name: Step 5 - Release Parent
         if: contains(env.PUSH_PACKAGES, true)
         env:
           JAVA_HOME: /usr/lib/jvm/java-17-openjdk/
@@ -48,11 +48,24 @@ jobs:
           release-branch-name: "main"
           git-release-bot-name: "ReleaseBot"
           m2-home-folder: '~/.m2/repository'
-          maven-project-folder: "paystack-domain/"
           access-token: ${{ secrets.GH_PAT }}
           maven-args: "-Dmaven.deploy.skip=true -Dmaven.resolver.transport=wagon -Dmaven.javadoc.skip=true -DskipTests -DskipITs -Ddockerfile.skip -DdockerCompose.skip"
 
-      - name: Release Dispatch Action
+      - name: Step 6 - Release Domain
+        if: contains(env.PUSH_PACKAGES, true)
+        env:
+          JAVA_HOME: /usr/lib/jvm/java-17-openjdk/
+        uses: qcastel/github-actions-maven-release@master
+        with:
+          skip-perform: true
+          release-branch-name: "main"
+          git-release-bot-name: "ReleaseBot"
+          m2-home-folder: '~/.m2/repository'
+          access-token: ${{ secrets.GH_PAT }}
+          maven-project-folder: "paystack-domain/"
+          maven-args: "-Dmaven.deploy.skip=true -Dmaven.resolver.transport=wagon -Dmaven.javadoc.skip=true -DskipTests -DskipITs -Ddockerfile.skip -DdockerCompose.skip"
+
+      - name: Step 7 - Publish Dependency
         if: contains(env.PUSH_PACKAGES, true)
         uses: peter-evans/repository-dispatch@v2
         with:
