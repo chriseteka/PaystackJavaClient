@@ -20,5 +20,5 @@ public interface RichResponse<T> {
         }
     }
 
-    record Impl<T>(T result, String raw) implements RichResponse<T> { }
+    record RichResponseImpl<T>(T result, String raw) implements RichResponse<T> { }
 }

@@ -1,13 +1,15 @@
 package com.chrisworks.paystackclient;
 
-import com.chrisworks.paystackclient.asynchronous.Asynchronous;
-import com.chrisworks.paystackclient.synchronous.Synchronous;
+import com.chrisworks.paystackclient.definitions.ApplePayClient;
+import com.chrisworks.paystackclient.definitions.PlanClient;
+import com.chrisworks.paystackclient.definitions.TransactionClient;
 import okhttp3.OkHttpClient;
 
 public interface PaystackClient {
 
-    Synchronous synchronous();
-    Asynchronous asynchronous();
+    ApplePayClient applePay();
+    PlanClient plan();
+    TransactionClient transaction();
 
     final class Impl extends WithConfiguredHttpClient implements PaystackClient {
         Impl(OkHttpClient httpClient) {
@@ -15,13 +17,18 @@ public interface PaystackClient {
         }
 
         @Override
-        public Synchronous synchronous() {
-            return new Synchronous.Impl(httpClient);
+        public ApplePayClient applePay() {
+            return new ApplePayClient.Impl(httpClient);
         }
 
         @Override
-        public Asynchronous asynchronous() {
-            return new Asynchronous.Impl(httpClient);
+        public PlanClient plan() {
+            return new PlanClient.Impl(httpClient);
+        }
+
+        @Override
+        public TransactionClient transaction() {
+            return new TransactionClient.Impl(httpClient);
         }
     }
 }

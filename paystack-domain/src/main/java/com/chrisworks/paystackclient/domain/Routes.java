@@ -18,4 +18,18 @@ public final class Routes {
         public static final String BASE_URL = Routes.BASE_URL + "/plan";
         public static final UnaryOperator<String> BY_ID_OR_CODE = (BASE_URL + "/%s")::formatted;
     }
+
+    public static final class Transaction {
+        private Transaction() {}
+
+        public static final String BASE_URL = Routes.BASE_URL + "/transaction";
+        public static final String INIT_TRANSACTION_URL = BASE_URL + "/initialize";
+        public static final String TOTAL_TRANSACTION_URL = BASE_URL + "/totals";
+        public static final String EXPORT_TRANSACTIONS_URL = BASE_URL + "/export";
+        public static final String PARTIAL_DEBIT_URL = BASE_URL + "/partial_debit";
+        public static final UnaryOperator<String> BY_ID = (BASE_URL + "/%s")::formatted;
+        public static final String CHARGE_AUTHORIZATION_URL = BASE_URL + "/charge_authorization";
+        public static final UnaryOperator<String> VIEW_TIMELINE_URL = (BASE_URL + "/timeline/%s")::formatted;
+        public static final UnaryOperator<String> VERIFY_TRANSACTION_URL = (BASE_URL + "/verify/%s")::formatted;
+    }
 }
