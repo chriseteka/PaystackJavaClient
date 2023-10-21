@@ -4,10 +4,10 @@
     <groupId>com.chrisworks.paystackclient</groupId>
     <artifactId>paystack-clients</artifactId>
     <name>paystack-clients</name>
-    <version>1.0.118-SNAPSHOT</version>
+    <version>1.0.118</version>
 
     <properties>
-        <revision>1.0.118-SNAPSHOT</revision>
+        <revision>1.0.118</revision>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
