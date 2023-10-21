@@ -10,7 +10,26 @@ The Client comes in 3 flavors:
 2. Asynchronous - Responses in CompletableFuture
 3. Reactive - Responses in Mono and Flux
 
-Example:
+## Setup
+1. Add the dependency to your project
+```xml
+<dependency>
+  <groupId>com.chrisworks.paystackclient</groupId>
+  <artifactId>paystack-clients</artifactId>
+  <version>${VERSION}</version>
+</dependency>
+```
+2. Add GitHub Maven Package Repository to your POM
+```xml
+<repositories>
+    <repository>
+        <id>github</id>
+        <url>https://maven.pkg.github.com/chriseteka/paystackjavaclient</url>
+    </repository>
+</repositories>
+```
+
+## usage
 
 ```java
 // Imports here
