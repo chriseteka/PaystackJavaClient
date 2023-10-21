@@ -44,17 +44,15 @@ jobs:
               "password": "${{ secrets.GH_PAT }}"
             }]
 
-      - name: Publish Parent
-        run: mvn -B deploy
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+      - name: Build Project with Maven
+        run: mvn -B package
 
       - name: Publish Domain Package
-        run: mvn -B deploy -pl paystack-domain
+        run: mvn -B deploy -pl paystack-domain --file flattened-pom.xml
         env:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
 
       - name: Publish Client Package
-        run: mvn -B deploy -pl paystack-clients
+        run: mvn -B deploy -pl paystack-clients --file flattened-pom.xml
         env:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
