@@ -44,6 +44,20 @@ jobs:
               "password": "${{ secrets.GH_PAT }}"
             }]
 
+      - name: Step 6 - Release Parent
+        if: contains(env.PUSH_PACKAGES, true)
+        env:
+          JAVA_HOME: /usr/lib/jvm/java-17-openjdk/
+        uses: qcastel/github-actions-maven-release@master
+        with:
+          skip-perform: true
+          release-branch-name: "main"
+          git-release-bot-name: "ReleaseBot"
+          m2-home-folder: '~/.m2/repository'
+          access-token: ${{ secrets.GH_PAT }}
+          maven-project-folder: "paystack-domain/"
+          maven-args: "-Dmaven.resolver.transport=wagon -Dmaven.javadoc.skip=true -DskipTests -DskipITs -Ddockerfile.skip -DdockerCompose.skip"
+
 #      - name: Publish Domain Package
 #        run: mvn -B deploy -pl paystack-domain
 #        env:
