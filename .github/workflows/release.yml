@@ -41,11 +41,11 @@ jobs:
             }]
 
       - name: Publish Domain Package
-        run: mvn versions:set -DnewVersion=${{ github.event.client_payload.version }} -B deploy --file paystack-domain/release-pom.xml
+        run: mvn versions:set -DnewVersion=${{ github.event.client_payload.version }} && mvn -B deploy -pl paystack-domain
         env:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
 
       - name: Publish Client Package
-        run: mvn versions:set -DnewVersion=${{ github.event.client_payload.version }} -B deploy --file paystack-clients/release-pom.xml
+        run: mvn versions:set -DnewVersion=${{ github.event.client_payload.version }} && mvn -B deploy -pl paystack-clients
         env:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}

@@ -7,7 +7,6 @@
     <version>1.0.121-SNAPSHOT</version>
 
     <properties>
-        <revision>1.0.121-SNAPSHOT</revision>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -19,7 +18,7 @@
         <dependency>
             <groupId>com.chrisworks.paystackclient</groupId>
             <artifactId>paystack-domain</artifactId>
-            <version>${revision}</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>

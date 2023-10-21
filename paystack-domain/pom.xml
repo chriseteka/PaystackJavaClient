@@ -7,7 +7,6 @@
     <version>1.0.121-SNAPSHOT</version>
 
     <properties>
-        <revision>1.0.110</revision>
         <jackson.version>2.15.3</jackson.version>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
