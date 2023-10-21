@@ -4,7 +4,7 @@
     <groupId>com.chrisworks.paystackclient</groupId>
     <artifactId>paystack-domain</artifactId>
     <name>paystack-domain</name>
-    <version>1.0.113-SNAPSHOT</version>
+    <version>1.0.114-SNAPSHOT</version>
 
     <properties>
         <revision>1.0.110</revision>
