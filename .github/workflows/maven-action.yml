@@ -51,7 +51,7 @@ jobs:
 
       - name: Step 5.1 - Read POM.xml Version
         if: contains(env.PUSH_PACKAGES, true)
-        run: echo "RELEASE_VERSION=$(echo \"${"$(mvn -q -Dexec.executable=echo -Dexec.args='${project.version}' --non-recursive exec:exec)"//-SNAPSHOT/}\")" >> $GITHUB_ENV
+        run: echo RELEASE_VERSION=$(echo ${"$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)"//-SNAPSHOT/}) >> $GITHUB_ENV
 
       - name: Step 6 - Release Parent
         if: contains(env.PUSH_PACKAGES, true)
