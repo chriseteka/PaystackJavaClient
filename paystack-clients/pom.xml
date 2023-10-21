@@ -4,14 +4,14 @@
     <groupId>com.chrisworks.paystackclient</groupId>
     <artifactId>paystack-clients</artifactId>
     <name>paystack-clients</name>
-    <version>1.0.7</version>
+    <version>1.0.70</version>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <okhttp.version>5.0.0-alpha.11</okhttp.version>
-        <paystack-domain.version>1.0.7</paystack-domain.version>
+        <paystack-domain.version>1.0.70</paystack-domain.version>
         <distribution-repo.url>https://maven.pkg.github.com/chriseteka/paystackjavaclient</distribution-repo.url>
     </properties>
 
