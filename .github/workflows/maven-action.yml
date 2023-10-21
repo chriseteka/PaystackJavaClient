@@ -68,12 +68,12 @@ jobs:
 
       - name: Step 7 - Publish Domain Package
         if: contains(env.PUSH_PACKAGES, true)
-        run: mvn -Drevision=${{ env.RELEASE_VERSION }} -B deploy -pl paystack-domain
+        run: mvn -Drevision=${{ env.RELEASE_VERSION }} -DskipTests -B clean package deploy -pl paystack-domain --file release-pom.xml
         env:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
 
       - name: Step 8 - Publish Client Package
         if: contains(env.PUSH_PACKAGES, true)
-        run: mvn -Drevision=${{ env.RELEASE_VERSION }} -B deploy -pl paystack-clients
+        run: mvn -Drevision=${{ env.RELEASE_VERSION }} -DskipTests -B clean package deploy -pl paystack-clients --file release-pom.xml
         env:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
