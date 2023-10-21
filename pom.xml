@@ -18,6 +18,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jackson.version>2.15.3</jackson.version>
         <okhttp.version>5.0.0-alpha.11</okhttp.version>
+        <distribution-repo.url>https://maven.pkg.github.com/chriseteka/paystackjavaclient</distribution-repo.url>
     </properties>
 
     <dependencyManagement>
@@ -56,7 +57,7 @@
         <repository>
             <id>github</id>
             <name>GitHub Packages</name>
-            <url>https://maven.pkg.github.com/chriseteka/paystackjavaclient</url>
+            <url>${distribution-repo.url}</url>
         </repository>
     </distributionManagement>
 

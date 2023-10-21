@@ -25,4 +25,11 @@
         </dependency>
     </dependencies>
 
+    <repositories>
+        <repository>
+            <id>github</id>
+            <url>${distribution-repo.url}</url>
+        </repository>
+    </repositories>
+
 </project>
