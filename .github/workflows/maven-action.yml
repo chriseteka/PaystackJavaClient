@@ -38,7 +38,18 @@ jobs:
       - name: Step 4 - Build Project with Maven
         run: mvn -B package --file pom.xml
 
-      - name: Step 5 - Release Parent
+      - name: Step 5 - Configure Maven settings.xml
+        uses: s4u/maven-settings-action@v2.8.0
+        with:
+          githubServer: false
+          servers: |
+            [{
+              "id": "github",
+              "username": "${{ github.actor }}",
+              "password": "${{ secrets.GH_PAT }}"
+            }]
+
+      - name: Step 6 - Release Parent
         if: contains(env.PUSH_PACKAGES, true)
         env:
           JAVA_HOME: /usr/lib/jvm/java-17-openjdk/
@@ -49,12 +60,12 @@ jobs:
           git-release-bot-name: "ReleaseBot"
           m2-home-folder: '~/.m2/repository'
           access-token: ${{ secrets.GH_PAT }}
-          maven-args: "-Dmaven.deploy.skip=true -Dmaven.resolver.transport=wagon -Dmaven.javadoc.skip=true -DskipTests -DskipITs -Ddockerfile.skip -DdockerCompose.skip"
+          maven-args: "-Dmaven.resolver.transport=wagon -Dmaven.javadoc.skip=true -DskipTests -DskipITs -Ddockerfile.skip -DdockerCompose.skip"
 
-      - name: Step 6 - Publish Dependency
-        if: contains(env.PUSH_PACKAGES, true)
-        uses: peter-evans/repository-dispatch@v2
-        with:
-          token: ${{ secrets.GH_PAT }}
-          event-type: execute-publish
-          client-payload: '{"sha": "${{ github.sha }}"}'
+#      - name: Step 6 - Publish Dependency
+#        if: contains(env.PUSH_PACKAGES, true)
+#        uses: peter-evans/repository-dispatch@v2
+#        with:
+#          token: ${{ secrets.GH_PAT }}
+#          event-type: execute-publish
+#          client-payload: '{"sha": "${{ github.sha }}"}'
