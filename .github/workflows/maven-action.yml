@@ -66,14 +66,10 @@ jobs:
           access-token: ${{ secrets.GH_PAT }}
           maven-args: "-Dmaven.resolver.transport=wagon -Dmaven.javadoc.skip=true -DskipTests -DskipITs -Ddockerfile.skip -DdockerCompose.skip"
 
-      - name: Step 7 - Publish Domain Package
+      - name: Step 7 - Publish Dependency
         if: contains(env.PUSH_PACKAGES, true)
-        run: mvn -Drevision=${{ env.RELEASE_VERSION }} -DskipTests -B deploy --file paystack-domain/release-pom.xml
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
-
-      - name: Step 8 - Publish Client Package
-        if: contains(env.PUSH_PACKAGES, true)
-        run: mvn -Drevision=${{ env.RELEASE_VERSION }} -DskipTests -B deploy --file paystack-clients/release-pom.xml
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{ secrets.GH_PAT }}
+          event-type: execute-publish
+          client-payload: '{"version": "${{ env.RELEASE_VERSION }}"}'
