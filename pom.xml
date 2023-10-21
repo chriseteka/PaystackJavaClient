@@ -4,7 +4,7 @@
 
     <groupId>com.chrisworks.paystackclient</groupId>
     <artifactId>PaystackJavaClient</artifactId>
-    <version>1.0.116-SNAPSHOT</version>
+    <version>1.0.116</version>
     <packaging>pom</packaging>
     <modules>
         <module>paystack-domain</module>
@@ -21,7 +21,7 @@
         <connection>scm:git:${project.scm.url}</connection>
         <developerConnection>scm:git:${project.scm.url}</developerConnection>
         <url>https://github.com/chriseteka/PaystackJavaClient.git</url>
-        <tag>HEAD</tag>
+        <tag>PaystackJavaClient-1.0.116</tag>
     </scm>
 
 </project>
