@@ -44,10 +44,10 @@ jobs:
               "password": "${{ secrets.GH_PAT }}"
             }]
 
-      - name: Publish Domain Package
-        run: mvn -B deploy -pl paystack-domain
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+#      - name: Publish Domain Package
+#        run: mvn -B deploy -pl paystack-domain
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
 
       - name: Publish Client Package
         run: mvn -B deploy -pl paystack-clients
