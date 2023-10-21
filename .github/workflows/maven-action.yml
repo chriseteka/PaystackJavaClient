@@ -49,6 +49,11 @@ jobs:
               "password": "${{ secrets.GH_PAT }}"
             }]
 
+      - name: Step 5.1 - Read POM.xml Version
+        if: contains(env.PUSH_PACKAGES, true)
+        id: readVersion
+        run: echo ::set-output name=version::$(echo "${"$(mvn -q -Dexec.executable=echo -Dexec.args='${project.version}' --non-recursive exec:exec)"//-SNAPSHOT/}")
+
       - name: Step 6 - Release Parent
         if: contains(env.PUSH_PACKAGES, true)
         env:
@@ -62,10 +67,14 @@ jobs:
           access-token: ${{ secrets.GH_PAT }}
           maven-args: "-Dmaven.resolver.transport=wagon -Dmaven.javadoc.skip=true -DskipTests -DskipITs -Ddockerfile.skip -DdockerCompose.skip"
 
-#      - name: Step 6 - Publish Dependency
-#        if: contains(env.PUSH_PACKAGES, true)
-#        uses: peter-evans/repository-dispatch@v2
-#        with:
-#          token: ${{ secrets.GH_PAT }}
-#          event-type: execute-publish
-#          client-payload: '{"sha": "${{ github.sha }}"}'
+      - name: Step 7 - Publish Domain Package
+        if: contains(env.PUSH_PACKAGES, true)
+        run: mvn -Drevision=${{ steps.readVersion.outputs.version }} -B deploy -pl paystack-domain
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+
+      - name: Step 8 - Publish Client Package
+        if: contains(env.PUSH_PACKAGES, true)
+        run: mvn -Drevision=${{ steps.readVersion.outputs.version }} -B deploy -pl paystack-clients
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
