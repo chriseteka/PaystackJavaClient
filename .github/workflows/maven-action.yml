@@ -25,8 +25,7 @@ jobs:
         with:
           path: ~/.m2/repository
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-          restore-keys: |
-            ${{ runner.os }}-maven-
+          restore-keys: ${{ runner.os }}-maven-
 
       - name: Step 3 - Setup JDK 17
         uses: actions/setup-java@v3
@@ -63,7 +62,7 @@ jobs:
           release-branch-name: "main"
           git-release-bot-name: "ReleaseBot"
           m2-home-folder: '~/.m2/repository'
-          access-token: ${{ secrets.GH_PAT }}
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
           maven-args: "-Dmaven.resolver.transport=wagon -Dmaven.javadoc.skip=true -DskipTests -DskipITs -Ddockerfile.skip -DdockerCompose.skip"
 
       - name: Step 7 - Publish Dependency
