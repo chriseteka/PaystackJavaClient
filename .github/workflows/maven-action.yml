@@ -49,6 +49,10 @@ jobs:
               "password": "${{ secrets.GH_PAT }}"
             }]
 
+      - name: Step 5.1 - Read POM.xml Version
+        if: contains(env.PUSH_PACKAGES, true)
+        run: chmod +x read-version.sh && ./read-version.sh
+
       - name: Step 6 - Release Parent
         if: contains(env.PUSH_PACKAGES, true)
         env:
@@ -62,10 +66,10 @@ jobs:
           access-token: ${{ secrets.GH_PAT }}
           maven-args: "-Dmaven.resolver.transport=wagon -Dmaven.javadoc.skip=true -DskipTests -DskipITs -Ddockerfile.skip -DdockerCompose.skip"
 
-#      - name: Step 6 - Publish Dependency
-#        if: contains(env.PUSH_PACKAGES, true)
-#        uses: peter-evans/repository-dispatch@v2
-#        with:
-#          token: ${{ secrets.GH_PAT }}
-#          event-type: execute-publish
-#          client-payload: '{"sha": "${{ github.sha }}"}'
+      - name: Step 7 - Publish Dependency
+        if: contains(env.PUSH_PACKAGES, true)
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{ secrets.GH_PAT }}
+          event-type: execute-publish
+          client-payload: '{"version": "${{ env.RELEASE_VERSION }}"}'
