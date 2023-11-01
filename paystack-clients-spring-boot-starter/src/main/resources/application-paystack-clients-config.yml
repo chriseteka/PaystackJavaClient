@@ -1,0 +1,23 @@
+base-url: "https://api.paystack.co"
+
+#TODO: How do I declare header once and re-use, to avoid repetition, like in my case below:
+http:
+  clients:
+
+    plan-client:
+      url: "${base-url}/plan"
+      headers:
+        Content-Type: "application/json"
+        Authorization: "Bearer ${paystack-client.secret-key}"
+
+    apple-pay-client:
+      url: "${base-url}/apple-pay"
+      headers:
+        Content-Type: "application/json"
+        Authorization: "Bearer ${paystack-client.secret-key}"
+
+    transaction-client:
+      url: "${base-url}/transaction"
+      headers:
+        Content-Type: "application/json"
+        Authorization: "Bearer ${paystack-client.secret-key}"

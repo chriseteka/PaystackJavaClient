@@ -9,6 +9,7 @@
     <modules>
         <module>paystack-domain</module>
         <module>paystack-clients</module>
+        <module>paystack-clients-spring-boot-starter</module>
     </modules>
 
     <properties>

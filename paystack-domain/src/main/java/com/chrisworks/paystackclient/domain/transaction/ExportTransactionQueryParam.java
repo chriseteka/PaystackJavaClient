@@ -3,6 +3,7 @@ package com.chrisworks.paystackclient.domain.transaction;
 import com.chrisworks.paystackclient.domain.Amount;
 import com.chrisworks.paystackclient.domain.Currency;
 import com.chrisworks.paystackclient.domain.request.PaystackListPagedQueryParam;
+import com.chrisworks.paystackclient.domain.request.QueryParamConstants;
 
 import java.math.BigInteger;
 import java.time.ZonedDateTime;
@@ -18,47 +19,47 @@ public final class ExportTransactionQueryParam extends PaystackListPagedQueryPar
     }
 
     public ExportTransactionQueryParam from(ZonedDateTime from) {
-        params.put("from", from.toString());
+        params.put(QueryParamConstants.FROM, from.toString());
         return this;
     }
 
     public ExportTransactionQueryParam to(ZonedDateTime to) {
-        params.put("to", to.toString());
+        params.put(QueryParamConstants.TO, to.toString());
         return this;
     }
 
     public ExportTransactionQueryParam customer(BigInteger customerId) {
-        params.put("customer", String.valueOf(customerId));
+        params.put(QueryParamConstants.CUSTOMER, String.valueOf(customerId));
         return this;
     }
 
     public ExportTransactionQueryParam status(String status) {
-        params.put("status", status);
+        params.put(QueryParamConstants.STATUS, status);
         return this;
     }
 
     public ExportTransactionQueryParam currency(Currency currency) {
-        params.put("currency", currency.name());
+        params.put(QueryParamConstants.CURRENCY, currency.name());
         return this;
     }
 
     public ExportTransactionQueryParam amount(Amount amount) {
-        params.put("amount", amount.getUnitValue());
+        params.put(QueryParamConstants.AMOUNT, amount.getUnitValue());
         return this;
     }
 
     public ExportTransactionQueryParam settled(boolean settled) {
-        params.put("settled", Boolean.toString(settled));
+        params.put(QueryParamConstants.SETTLED, Boolean.toString(settled));
         return this;
     }
 
     public ExportTransactionQueryParam settlement(BigInteger settlement) {
-        params.put("settlement", String.valueOf(settlement));
+        params.put(QueryParamConstants.SETTLEMENT, String.valueOf(settlement));
         return this;
     }
 
     public ExportTransactionQueryParam paymentPage(BigInteger paymentPage) {
-        params.put("payment_page", String.valueOf(paymentPage));
+        params.put(QueryParamConstants.PAYMENT_PAGE, String.valueOf(paymentPage));
         return this;
     }
 

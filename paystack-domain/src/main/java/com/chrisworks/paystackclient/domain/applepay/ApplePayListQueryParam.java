@@ -1,6 +1,7 @@
 package com.chrisworks.paystackclient.domain.applepay;
 
 import com.chrisworks.paystackclient.domain.request.PaystackListUnPagedQueryParam;
+import com.chrisworks.paystackclient.domain.request.QueryParamConstants;
 
 public class ApplePayListQueryParam extends PaystackListUnPagedQueryParam {
 
@@ -9,12 +10,12 @@ public class ApplePayListQueryParam extends PaystackListUnPagedQueryParam {
     }
 
     public ApplePayListQueryParam next(String next) {
-        params.put("next", next);
+        params.put(QueryParamConstants.NEXT, next);
         return this;
     }
 
     public ApplePayListQueryParam previous(String previous) {
-        params.put("previous", previous);
+        params.put(QueryParamConstants.PREVIOUS, previous);
         return this;
     }
 }

@@ -1,6 +1,7 @@
 package com.chrisworks.paystackclient.domain.transaction;
 
 import com.chrisworks.paystackclient.domain.request.PaystackListPagedQueryParam;
+import com.chrisworks.paystackclient.domain.request.QueryParamConstants;
 
 import java.math.BigInteger;
 import java.time.ZonedDateTime;
@@ -16,12 +17,12 @@ public class TransactionTotalQueryParam extends PaystackListPagedQueryParam {
     }
 
     public TransactionTotalQueryParam from(ZonedDateTime from) {
-        params.put("from", from.toString());
+        params.put(QueryParamConstants.FROM, from.toString());
         return this;
     }
 
     public TransactionTotalQueryParam to(ZonedDateTime to) {
-        params.put("to", to.toString());
+        params.put(QueryParamConstants.TO, to.toString());
         return this;
     }
 }
