@@ -3,7 +3,7 @@ package com.chrisworks.paystackclient.domain.response;
 import java.math.BigInteger;
 import java.util.List;
 
-public interface PaystackMultiResponse<T extends ResponseDataDefaults> extends ResponseDefaults {
+public interface PaystackMultiResponse<T> extends ResponseDefaults {
 
     List<T> data();
     PageMetaInfo meta();

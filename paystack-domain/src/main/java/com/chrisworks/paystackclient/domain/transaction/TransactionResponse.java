@@ -7,7 +7,6 @@ import com.chrisworks.paystackclient.domain.Currency;
 import com.chrisworks.paystackclient.domain.Customer;
 import com.chrisworks.paystackclient.domain.response.PaystackMultiResponse;
 import com.chrisworks.paystackclient.domain.response.PaystackSingleResponse;
-import com.chrisworks.paystackclient.domain.response.ResponseDataDefaults;
 
 import java.math.BigInteger;
 import java.time.ZonedDateTime;
@@ -19,11 +18,7 @@ public record TransactionResponse(BigInteger id, String domain, String status, S
                                   Amount.MoneyValue fees, Object fees_split, Authorization authorization, Customer customer,
                                   Object plan, Object split, BigInteger order_id, ZonedDateTime paidAt, ZonedDateTime createdAt,
                                   Amount.MoneyValue requested_amount, Object pos_transaction_data, Object source, Object fees_breakdown,
-                                  ZonedDateTime transaction_date, Object plan_object, Object subaccount) implements ResponseDataDefaults {
-    @Override
-    public ZonedDateTime updatedAt() {
-        return null;
-    }
+                                  ZonedDateTime transaction_date, Object plan_object, Object subaccount) {
 
     public record Single(boolean status, String message, TransactionResponse data)
             implements PaystackSingleResponse<TransactionResponse> {}
