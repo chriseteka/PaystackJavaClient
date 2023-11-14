@@ -1,6 +1,7 @@
 package com.chrisworks.paystackclient.domain.plan;
 
 import com.chrisworks.paystackclient.domain.Amount;
+import com.chrisworks.paystackclient.domain.Currency;
 import com.chrisworks.paystackclient.domain.Interval;
 
 import java.math.BigInteger;
@@ -32,8 +33,8 @@ public final class UpdatePlanRequest extends CreatePlanRequest {
         return this;
     }
 
-    public UpdatePlanRequest currency(String currency) {
-        this.currency = currency;
+    public UpdatePlanRequest currency(Currency currency) {
+        this.currency = currency.name();
         return this;
     }
 

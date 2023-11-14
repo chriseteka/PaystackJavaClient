@@ -2,9 +2,6 @@ package com.chrisworks.paystackclient;
 
 
 import com.chrisworks.paystackclient.domain.PaystackException;
-import com.chrisworks.paystackclient.domain.response.RichResponse;
-import com.chrisworks.paystackclient.domain.transaction.TransactionResponse;
-import com.chrisworks.paystackclient.domain.transaction.TransactionTotalResponse;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Response;
@@ -14,7 +11,6 @@ import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 import java.io.IOException;
-import java.math.BigInteger;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.security.cert.X509Certificate;
@@ -28,13 +24,13 @@ public class PaystackClientConfiguration {
 
     private static PaystackClient paystackClient = null;
 
-    private static PaystackClient buildPaystackClientFrom(String secretKey) {
+    public static PaystackClient buildPaystackClientFrom(String secretKey) {
 
         if (paystackClient == null) {
 
             final SSLContext sslContext;
             try {
-                sslContext = SSLContext.getInstance("SSL");
+                sslContext = SSLContext.getInstance("TLSv1.2");
                 sslContext.init(null, trustAllCerts, new java.security.SecureRandom());
             } catch (NoSuchAlgorithmException | KeyManagementException e) {
                 throw new PaystackException(e);
@@ -74,10 +70,12 @@ public class PaystackClientConfiguration {
             new X509TrustManager() {
                 @Override
                 public void checkClientTrusted(X509Certificate[] chain, String authType) {
+                    //intentional
                 }
 
                 @Override
                 public void checkServerTrusted(X509Certificate[] chain, String authType) {
+                    //intentional
                 }
 
                 @Override
@@ -86,41 +84,4 @@ public class PaystackClientConfiguration {
                 }
             }
     };
-
-    public static void main(String[] args) {
-        //Usage sample
-        final PaystackClient client = PaystackClientConfiguration.buildPaystackClientFrom("<Your secret key here>");
-//        RichResponse<PlanResponse.Single> res1 = client
-//                .plan()
-//                .createPlan(new CreatePlanRequest("Sample Plan 9", Interval.DAILY,
-//                        Amount.actualValue(BigDecimal.valueOf(10_000)).ofCurrency(Currency.NGN)))
-//                .execute();
-//        System.out.println(res1);
-
-//        Void res = client
-//                .plan()
-//                .fetchPlan("PLN_16x08vyy3bu2h7x")
-//                .executeAsync()
-//                .thenAccept(re -> System.out.println(re.result()))
-//                .join();
-
-        RichResponse<TransactionResponse.Single> transactions = client
-                .transaction()
-                .fetchTransaction(BigInteger.valueOf(3200117924L))
-                .execute();
-
-        RichResponse<TransactionTotalResponse.Single> total = client.transaction().transactionTotals(null).execute();
-
-
-//        RichResponse<PlanResponse.Single> res2 = client
-//                .plan()
-//                .fetchPlan("PLN_16x08vyy3bu2h7x")
-//                .execute();
-        System.out.println(transactions);
-        System.out.println(total);
-
-//        String json = res.raw();
-//        PlanResponse.Multiple result = res.result();
-//        Map<String, Object> objectMap = res.rawJsonAsMap();
-    }
 }
