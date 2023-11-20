@@ -32,4 +32,10 @@ public final class Routes {
         public static final UnaryOperator<String> VIEW_TIMELINE_URL = (BASE_URL + "/timeline/%s")::formatted;
         public static final UnaryOperator<String> VERIFY_TRANSACTION_URL = (BASE_URL + "/verify/%s")::formatted;
     }
+
+    public static final class Product {
+        private Product(){}
+        public static final String BASE_URL = Routes.BASE_URL + "/product";
+        public static final UnaryOperator<String> BY_ID = (BASE_URL + "/%s")::formatted;
+    }
 }

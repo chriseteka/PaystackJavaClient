@@ -21,3 +21,9 @@ http:
       headers:
         Content-Type: "application/json"
         Authorization: "Bearer ${paystack-client.secret-key}"
+
+    product-client:
+      url: "${base-url}/product"
+      headers:
+        Content-Type: "application/json"
+        Authorization: "Bearer ${paystack-client.secret-key}"
