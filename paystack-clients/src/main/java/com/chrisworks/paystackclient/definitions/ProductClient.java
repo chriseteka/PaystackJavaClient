@@ -3,10 +3,9 @@ package com.chrisworks.paystackclient.definitions;
 import com.chrisworks.paystackclient.ExecutionSpec;
 import com.chrisworks.paystackclient.WithConfiguredHttpClient;
 import com.chrisworks.paystackclient.domain.Routes;
-import com.chrisworks.paystackclient.domain.product.CreateProductRequest;
+import com.chrisworks.paystackclient.domain.product.CreateOrUpdateProductRequest;
 import com.chrisworks.paystackclient.domain.product.ProductListQueryParam;
 import com.chrisworks.paystackclient.domain.product.ProductResponse;
-import com.chrisworks.paystackclient.domain.product.UpdateProductRequest;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -14,13 +13,13 @@ import org.jetbrains.annotations.NotNull;
 
 public interface ProductClient {
 
-    ExecutionSpec<ProductResponse.Single> createProduct(CreateProductRequest body);
+    ExecutionSpec<ProductResponse.Single> createProduct(CreateOrUpdateProductRequest body);
 
     ExecutionSpec<ProductResponse.Multiple> listProducts(ProductListQueryParam queryParam);
 
     ExecutionSpec<ProductResponse.Single> fetchProduct(@NotNull String id);
 
-    ExecutionSpec<ProductResponse.Single> updateProduct(@NotNull String id, UpdateProductRequest body);
+    ExecutionSpec<ProductResponse.Single> updateProduct(@NotNull String id, CreateOrUpdateProductRequest body);
 
     final class Impl extends WithConfiguredHttpClient implements ProductClient {
 
@@ -29,7 +28,7 @@ public interface ProductClient {
         }
 
         @Override
-        public ExecutionSpec<ProductResponse.Single> createProduct(CreateProductRequest body) {
+        public ExecutionSpec<ProductResponse.Single> createProduct(CreateOrUpdateProductRequest body) {
             final Request request = new Request.Builder()
                     .url(Routes.Product.BASE_URL)
                     .post(RequestBody.create(body.json(), applicationJson))
@@ -59,7 +58,7 @@ public interface ProductClient {
         }
 
         @Override
-        public ExecutionSpec<ProductResponse.Single> updateProduct(@NotNull String id, UpdateProductRequest body) {
+        public ExecutionSpec<ProductResponse.Single> updateProduct(@NotNull String id, CreateOrUpdateProductRequest body) {
             final Request request = new Request.Builder()
                     .url(Routes.Product.BY_ID.apply(id))
                     .put(RequestBody.create(body.json(), applicationJson))

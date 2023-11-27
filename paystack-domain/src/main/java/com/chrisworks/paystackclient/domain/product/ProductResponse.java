@@ -11,8 +11,8 @@ import java.util.List;
 
 public record ProductResponse(String name, String description, Currency currency, Amount.MoneyValue price,
                               Integer quantity, boolean is_shippable, boolean unlimited, BigInteger integration,
-                              String domain, Metadata metadata, String slug, String product_code, Integer quantity_sold,
-                              String type, ShippingFields shipping_fields, boolean active, boolean in_stock,
+                              String domain, Object metadata, String slug, String product_code, Integer quantity_sold,
+                              String type, Object shipping_fields, boolean active, boolean in_stock,
                               Integer minimum_orderable, Integer maximum_orderable, boolean low_stock_alert,
                               BigInteger id, ZonedDateTime createdAt, ZonedDateTime updatedAt) {
 
@@ -28,9 +28,4 @@ public record ProductResponse(String name, String description, Currency currency
             implements PaystackMultiResponse<ProductResponse> {
     }
 
-    private record Metadata(String background_color) {
-    }
-
-    private record ShippingFields(String delivery_note) {
-    }
 }

@@ -3,21 +3,19 @@ package com.chrisworks.paystackclient.domain.product;
 import com.chrisworks.paystackclient.domain.Amount;
 import com.chrisworks.paystackclient.domain.request.RequestBody;
 
-public class CreateProductRequest implements RequestBody<CreateProductRequest> {
+public class CreateOrUpdateProductRequest implements RequestBody<CreateOrUpdateProductRequest> {
     private final String name;
     private final String description;
     private final String price;
     private final String currency;
-    private final boolean unlimited;
-    private final Integer quantity;
+    private boolean unlimited;
+    private Integer quantity;
 
-    public CreateProductRequest(String name, String description, Amount price, boolean unlimited, Integer quantity){
+    public CreateOrUpdateProductRequest(String name, String description, Amount price){
         this.name = name;
         this.description = description;
         this.price = price.getUnitValue();
         this.currency = price.getCurrency().name();
-        this.unlimited = unlimited;
-        this.quantity = quantity;
     }
 
     public String getName() {
@@ -42,5 +40,15 @@ public class CreateProductRequest implements RequestBody<CreateProductRequest> {
 
     public Integer getQuantity() {
         return quantity;
+    }
+
+    public CreateOrUpdateProductRequest setUnlimited(boolean unlimited) {
+        this.unlimited = unlimited;
+        return this;
+    }
+
+    public CreateOrUpdateProductRequest setQuantity(Integer quantity) {
+        this.quantity = quantity;
+        return this;
     }
 }

@@ -1,6 +1,6 @@
 package com.chrisworks.paystackclients.definitions;
 
-import com.chrisworks.paystackclient.domain.product.CreateProductRequest;
+import com.chrisworks.paystackclient.domain.product.CreateOrUpdateProductRequest;
 import com.chrisworks.paystackclient.domain.product.ProductResponse;
 import com.chrisworks.paystackclient.domain.request.QueryParamConstants;
 import com.maciejwalkowiak.spring.http.annotation.HttpClient;
@@ -19,7 +19,7 @@ import java.time.ZonedDateTime;
 public interface ProductClient {
 
     @PostExchange
-    ProductResponse.Single createProduct(@RequestBody CreateProductRequest body);
+    ProductResponse.Single createProduct(@RequestBody CreateOrUpdateProductRequest body);
 
     @GetExchange
     ProductResponse.Multiple listProducts(
