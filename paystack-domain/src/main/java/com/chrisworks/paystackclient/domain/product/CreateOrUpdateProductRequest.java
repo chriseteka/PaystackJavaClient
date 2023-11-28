@@ -42,12 +42,12 @@ public class CreateOrUpdateProductRequest implements RequestBody<CreateOrUpdateP
         return quantity;
     }
 
-    public CreateOrUpdateProductRequest setUnlimited(boolean unlimited) {
+    public CreateOrUpdateProductRequest unlimited(boolean unlimited) {
         this.unlimited = unlimited;
         return this;
     }
 
-    public CreateOrUpdateProductRequest setQuantity(Integer quantity) {
+    public CreateOrUpdateProductRequest quantity(Integer quantity) {
         this.quantity = quantity;
         return this;
     }
