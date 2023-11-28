@@ -1,5 +1,7 @@
 package com.chrisworks.paystackclient.domain;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -11,7 +13,8 @@ public class SerialisationUtil {
 
     //TODO: Add maybe more config
     public static final ObjectMapper objectMapper = new ObjectMapper()
-            .enable(MapperFeature.ACCEPT_CASE_INSENSITIVE_ENUMS)
             .registerModule(new JavaTimeModule())
+            .enable(MapperFeature.ACCEPT_CASE_INSENSITIVE_ENUMS)
+            .setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY)
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 }

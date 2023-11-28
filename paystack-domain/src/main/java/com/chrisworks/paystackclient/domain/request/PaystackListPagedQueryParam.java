@@ -8,8 +8,8 @@ public abstract class PaystackListPagedQueryParam implements QueryParamBuilder {
     protected final Map<String, String> params = new HashMap<>(15);
 
     protected PaystackListPagedQueryParam(BigInteger perPage, BigInteger page) {
-        params.put("page", page.toString());
-        params.put("perPage", perPage.toString());
+        params.put(QueryParamConstants.PAGE, page.toString());
+        params.put(QueryParamConstants.PER_PAGE, perPage.toString());
     }
 
     protected PaystackListPagedQueryParam() {}

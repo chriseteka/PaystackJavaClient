@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.chrisworks.paystackclient</groupId>
+    <artifactId>paystack-clients-spring-boot-starter</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>paystack-clients-spring-boot-starter</name>
+    <description>paystack-clients-spring-boot-starter</description>
+
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <spring-boot-http-clients.version>0.1.1</spring-boot-http-clients.version>
+        <distribution-repo.url>https://maven.pkg.github.com/chriseteka/paystackjavaclient</distribution-repo.url>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.maciejwalkowiak.spring</groupId>
+            <artifactId>spring-boot-http-clients</artifactId>
+            <version>${spring-boot-http-clients.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.chrisworks.paystackclient</groupId>
+            <artifactId>paystack-domain</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+
+    <repositories>
+        <repository>
+            <id>github</id>
+            <url>${distribution-repo.url}</url>
+        </repository>
+    </repositories>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub Packages</name>
+            <url>${distribution-repo.url}</url>
+        </repository>
+    </distributionManagement>
+
+</project>

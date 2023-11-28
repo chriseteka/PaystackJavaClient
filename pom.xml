@@ -4,11 +4,12 @@
 
     <groupId>com.chrisworks.paystackclient</groupId>
     <artifactId>PaystackJavaClient</artifactId>
-    <version>1.0.2-SNAPSHOT</version>
+    <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
         <module>paystack-domain</module>
         <module>paystack-clients</module>
+        <module>paystack-clients-spring-boot-starter</module>
     </modules>
 
     <properties>

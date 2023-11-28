@@ -3,12 +3,12 @@ package com.chrisworks.paystackclient.domain.response;
 import java.math.BigInteger;
 import java.util.List;
 
-public interface PaystackMultiResponse<T extends ResponseDataDefaults> extends ResponseDefaults {
+public interface PaystackMultiResponse<T> extends ResponseDefaults {
 
     List<T> data();
-    PageMetaInfo meta();
+    PageInfo meta();
 
-    interface PageMetaInfo {
+    interface PageInfo {
 
         BigInteger total();
         BigInteger skipped();
@@ -16,7 +16,7 @@ public interface PaystackMultiResponse<T extends ResponseDataDefaults> extends R
         BigInteger page();
         BigInteger pageCount();
 
-        record Impl(BigInteger total, BigInteger skipped, BigInteger perPage, BigInteger page, BigInteger pageCount) implements PageMetaInfo {}
+        record PageMetaInfo(BigInteger total, BigInteger skipped, BigInteger perPage, BigInteger page, BigInteger pageCount) implements PageInfo {}
 
     }
 }

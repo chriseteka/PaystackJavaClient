@@ -1,11 +1,12 @@
 package com.chrisworks.paystackclient.domain.request;
 
 import com.chrisworks.paystackclient.domain.PaystackException;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import static com.chrisworks.paystackclient.domain.SerialisationUtil.objectMapper;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public interface RequestBody<T> {
 
     @SuppressWarnings("unchecked")

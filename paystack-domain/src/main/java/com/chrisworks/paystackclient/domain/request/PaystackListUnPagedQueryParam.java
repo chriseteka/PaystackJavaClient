@@ -8,7 +8,7 @@ public class PaystackListUnPagedQueryParam implements QueryParamBuilder {
     protected final Map<String, String> params = new HashMap<>(15);
 
     public PaystackListUnPagedQueryParam(boolean useCursor) {
-        params.put("use_cursor", Boolean.toString(useCursor));
+        params.put(QueryParamConstants.USE_CURSOR, Boolean.toString(useCursor));
     }
 
     @Override

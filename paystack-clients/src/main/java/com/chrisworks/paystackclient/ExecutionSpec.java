@@ -35,6 +35,7 @@ public final class ExecutionSpec<T> {
         }
     }
 
+    //TODO: waits a really long time before releasing thread
     public CompletableFuture<RichResponse<T>> executeAsync() {
         final CompletableFuture<RichResponse<T>> future = new CompletableFuture<>();
         httpClient.newCall(req).enqueue(new Callback() {
@@ -55,8 +56,6 @@ public final class ExecutionSpec<T> {
                 response.close();
             }
         });
-
-        httpClient.dispatcher().executorService().shutdown();
 
         return future;
     }
