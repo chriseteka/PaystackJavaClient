@@ -2,6 +2,7 @@ package com.chrisworks.paystackclient;
 
 import com.chrisworks.paystackclient.definitions.ApplePayClient;
 import com.chrisworks.paystackclient.definitions.PlanClient;
+import com.chrisworks.paystackclient.definitions.ProductClient;
 import com.chrisworks.paystackclient.definitions.TransactionClient;
 import okhttp3.OkHttpClient;
 
@@ -10,6 +11,7 @@ public interface PaystackClient {
     ApplePayClient applePay();
     PlanClient plan();
     TransactionClient transaction();
+    ProductClient product();
 
     final class Impl extends WithConfiguredHttpClient implements PaystackClient {
         Impl(OkHttpClient httpClient) {
@@ -29,6 +31,11 @@ public interface PaystackClient {
         @Override
         public TransactionClient transaction() {
             return new TransactionClient.Impl(httpClient);
+        }
+
+        @Override
+        public ProductClient product() {
+            return new ProductClient.Impl(httpClient);
         }
     }
 }
