@@ -6,9 +6,9 @@ import java.util.List;
 public interface PaystackMultiResponse<T> extends ResponseDefaults {
 
     List<T> data();
-    PageMetaInfo meta();
+    PageInfo meta();
 
-    interface PageMetaInfo {
+    interface PageInfo {
 
         BigInteger total();
         BigInteger skipped();
@@ -16,7 +16,7 @@ public interface PaystackMultiResponse<T> extends ResponseDefaults {
         BigInteger page();
         BigInteger pageCount();
 
-        record Impl(BigInteger total, BigInteger skipped, BigInteger perPage, BigInteger page, BigInteger pageCount) implements PageMetaInfo {}
+        record PageMetaInfo(BigInteger total, BigInteger skipped, BigInteger perPage, BigInteger page, BigInteger pageCount) implements PageInfo {}
 
     }
 }

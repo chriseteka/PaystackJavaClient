@@ -24,7 +24,7 @@ public record ProductResponse(String name, String description, Currency currency
             implements PaystackSingleResponse<ProductResponse> {
     }
 
-    public record Multiple(boolean status, String message, List<ProductResponse> data, PageMetaInfo.Impl meta)
+    public record Multiple(boolean status, String message, List<ProductResponse> data, PageInfo.PageMetaInfo meta)
             implements PaystackMultiResponse<ProductResponse> {
     }
 

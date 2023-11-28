@@ -5,7 +5,7 @@
 
     <groupId>com.chrisworks.paystackclient</groupId>
     <artifactId>paystack-clients-spring-boot-starter</artifactId>
-    <version>1.0.2-SNAPSHOT</version>
+    <version>0.0.1-SNAPSHOT</version>
     <name>paystack-clients-spring-boot-starter</name>
     <description>paystack-clients-spring-boot-starter</description>
 

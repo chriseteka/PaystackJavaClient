@@ -13,6 +13,15 @@ public final class Routes {
         public static final String BASE_URL  = Routes.BASE_URL + "/apple-pay/domain";
     }
 
+    public static final class Customer {
+        private Customer() {}
+        public static final String BASE_URL  = Routes.BASE_URL + "/customer";
+        public static final UnaryOperator<String> BY_CUSTOMER_CODE_OR_EMAIL = (BASE_URL + "/%s")::formatted;
+        public static final UnaryOperator<String> VALIDATE_CUSTOMER_URL = (BASE_URL + "/%s/identification")::formatted;
+        public static final String WHITE_OR_BLACK_LIST_URL  = BASE_URL + "/set_risk_action";
+        public static final String DEACTIVATE_AUTHORIZATION_URL  = BASE_URL + "/deactivate_authorization";
+    }
+
     public static final class Plan {
         private Plan() {}
         public static final String BASE_URL = Routes.BASE_URL + "/plan";
