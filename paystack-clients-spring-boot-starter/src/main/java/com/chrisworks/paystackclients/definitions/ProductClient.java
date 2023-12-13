@@ -33,5 +33,5 @@ public interface ProductClient {
     ProductResponse.Single fetchProduct(@PathVariable String id);
 
     @PutExchange("/{id}")
-    ProductResponse.Multiple updateProduct(@PathVariable String id);
+    ProductResponse.Single updateProduct(@PathVariable String id, @RequestBody CreateOrUpdateProductRequest body);
 }
