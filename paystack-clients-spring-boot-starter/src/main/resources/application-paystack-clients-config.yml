@@ -27,3 +27,9 @@ http:
       headers:
         Content-Type: "application/json"
         Authorization: "Bearer ${paystack-client.secret-key}"
+
+    subaccount-client:
+      url: "${base-url}/subaccount"
+      headers:
+        Content-Type: "application/json"
+        Authorization: "Bearer ${paystack-client.secret-key}"
