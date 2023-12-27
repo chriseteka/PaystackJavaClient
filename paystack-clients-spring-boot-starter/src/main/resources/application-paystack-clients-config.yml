@@ -31,7 +31,7 @@ http:
         Content-Type: ${CONTENT_TYPE}
         Authorization: ${AUTHORIZATION}
 
-    subaccount-client:
+    sub-account-client:
       url: "${BASE_URL}/subaccount"
       headers:
         Content-Type: ${CONTENT_TYPE}
