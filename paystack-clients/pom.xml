@@ -10,7 +10,7 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <okhttp.version>5.0.0-alpha.11</okhttp.version>
+        <okhttp.version>5.0.0-alpha.12</okhttp.version>
         <distribution-repo.url>https://maven.pkg.github.com/chriseteka/paystackjavaclient</distribution-repo.url>
     </properties>
 
