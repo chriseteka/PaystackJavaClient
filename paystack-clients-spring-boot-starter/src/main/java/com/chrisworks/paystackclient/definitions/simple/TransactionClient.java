@@ -1,7 +1,8 @@
-package com.chrisworks.paystackclients.definitions;
+package com.chrisworks.paystackclient.definitions.simple;
 
 import com.chrisworks.paystackclient.domain.request.QueryParamConstants;
 import com.chrisworks.paystackclient.domain.transaction.*;
+import com.chrisworks.paystackclient.definitions.Constants;
 import com.maciejwalkowiak.spring.http.annotation.HttpClient;
 import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.PathVariable;

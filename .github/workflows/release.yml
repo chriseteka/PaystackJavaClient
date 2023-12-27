@@ -49,3 +49,8 @@ jobs:
         run: mvn versions:set -DnewVersion=${{ github.event.client_payload.version }} versions:commit -pl paystack-clients && mvn -B deploy -pl paystack-clients
         env:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+
+      - name: Publish Client SpringBoot Starter Package
+        run: mvn versions:set -DnewVersion=${{ github.event.client_payload.version }} versions:commit -pl paystack-clients-spring-boot-starter && mvn -B deploy -pl paystack-clients-spring-boot-starter
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
