@@ -1,0 +1,17 @@
+{
+  "properties": [
+    {
+      "name": "paystack-client.secret-key",
+      "type": "java.lang.String",
+      "description": "Paystack Secret which can be found in your Paystack Account (API keys section).",
+      "sourceType": "com.chrisworks.paystackclient.PaystackClientsProperties"
+    },
+    {
+      "name": "paystack-client.definition-type",
+      "type": "java.lang.Enum",
+      "description": "This is the kind of client that will be built.",
+      "defaultValue": "NON_REACTIVE",
+      "sourceType": "com.chrisworks.paystackclient.PaystackClientsProperties"
+    }
+  ]
+}

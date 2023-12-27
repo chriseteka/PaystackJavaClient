@@ -11,15 +11,8 @@ The Client comes in 3 flavors:
 3. Reactive - Responses in Mono and Flux
 
 ## Setup
-1. Add the dependency to your project
-```xml
-<dependency>
-  <groupId>com.chrisworks.paystackclient</groupId>
-  <artifactId>paystack-clients</artifactId>
-  <version>${VERSION}</version>
-</dependency>
-```
-2. Add GitHub Maven Package Repository to your POM
+
+1. Add GitHub Maven Package Repository to your POM
 ```xml
 <repositories>
     <repository>
@@ -29,8 +22,66 @@ The Client comes in 3 flavors:
 </repositories>
 ```
 
-## usage
+### 1. When Using SpringBoot
+- Add the dependency to your spring boot project:
+```xml 
+<dependency>
+    <groupId>com.chrisworks.paystackclient</groupId>
+    <artifactId>paystack-clients-spring-boot-starter</artifactId>
+    <version>${VERSION}</version>
+</dependency>
+```
 
+- Add the following property to you `applications.properties` file
+```properties
+paystack-client.secret-key=INPUT_YOUR_PAYSTACK_SECRET_KEY_HERE
+paystack-client.definition-type=(REACTIVE|NON_REACTIVE) #This property is optional, it defaults to 'NON_REACTIVE' if not specified
+```
+
+- Usage
+```java
+// Imports here
+
+import com.chrisworks.paystackclient.definitions.simple.PlanClient; //When using the non-reactive type
+import com.chrisworks.paystackclient.definitions.reactive.PlanClient; //When using the reactive type
+
+@Service
+class Example {
+    
+    private final PlanClient planClient;
+    
+    public Example(PlanClient planClient) {
+        this.planClient = planClient;
+    }
+    
+    public void yourMethodThatDoesAndReturnsSomething() {
+        
+        //A.
+        PlanResponse.Single nonReactiveRes = planClient
+                .createPlan(new CreatePlanRequest("Sample Plan 9", Interval.DAILY,
+                        Amount.actualValue(BigDecimal.valueOf(10_000)).ofCurrency(Currency.NGN)));
+        
+        //Or B.
+        Mono<PlanResponse.Single> reactiveRes = planClient
+                .createPlan(new CreatePlanRequest("Sample Plan 9", Interval.DAILY,
+                        Amount.actualValue(BigDecimal.valueOf(10_000)).ofCurrency(Currency.NGN)));
+    }
+}
+```
+NB: During injection of the client, you can only inject either the REACTIVE type or the NON_REACTIVE type and never both.
+The implementation here is powered by the popular Spring WebClient which is part of the Spring Framework Project Reactor.
+
+### 2. Java/Maven Project without SpringBoot
+- Add the dependency to your project
+```xml
+<dependency>
+  <groupId>com.chrisworks.paystackclient</groupId>
+  <artifactId>paystack-clients</artifactId>
+  <version>${VERSION}</version>
+</dependency>
+```
+
+- usage
 ```java
 // Imports here
 
@@ -83,3 +134,4 @@ class Example {
     }
 }
 ```
+NB: The implementation here is powered by the popular OkHttp library.
