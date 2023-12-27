@@ -2,6 +2,14 @@
 CONTENT_TYPE: "application/json"
 BASE_URL: "https://api.paystack.co"
 AUTHORIZATION: "Bearer ${paystack-client.secret-key}"
+spring:
+  jackson:
+    visibility:
+      FIELD: ANY
+    deserialization:
+      FAIL-ON-UNKNOWN-PROPERTIES: false
+    mapper:
+      ACCEPT_CASE_INSENSITIVE_ENUMS: true
 
 #TODO: How do I declare header once and re-use, to avoid repetition, like in my case below:
 http:
