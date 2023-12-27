@@ -8,4 +8,5 @@ final class Constants {
     static final String APPLE_PAY_CLIENT = "apple-pay-client";
     static final String TRANSACTION_CLIENT = "transaction-client";
     static final String PRODUCT_CLIENT = "product-client";
+    static final String SUBACCOUNT_CLIENT = "subaccount-client";
 }
