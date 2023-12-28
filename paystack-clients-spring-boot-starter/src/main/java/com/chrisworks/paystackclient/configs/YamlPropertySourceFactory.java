@@ -1,4 +1,4 @@
-package com.chrisworks.paystackclient;
+package com.chrisworks.paystackclient.configs;
 
 import org.springframework.beans.factory.config.YamlPropertiesFactoryBean;
 import org.springframework.context.annotation.Configuration;

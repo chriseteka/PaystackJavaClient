@@ -19,8 +19,10 @@ public interface TransactionClient {
 
     @PostExchange("/initialize")
     InitTransactionResponse.Single initializeTransaction(@RequestBody InitTransactionRequest body);
+
     @GetExchange("/verify/{reference}")
     TransactionResponse.Single verifyTransaction(@PathVariable String reference);
+
     @GetExchange
     TransactionResponse.Multiple listTransaction(
             @RequestParam(name = QueryParamConstants.PAGE) @NonNull BigInteger page,
@@ -33,12 +35,16 @@ public interface TransactionClient {
             @RequestParam(name = QueryParamConstants.AMOUNT, required = false) String amount
 
     );
+
     @GetExchange("/{id}")
     TransactionResponse.Single fetchTransaction(@PathVariable BigInteger id);
+
     @PostExchange("/charge_authorization")
     TransactionTotalResponse.Single chargeAuthorization(@RequestBody ChargeAuthorizationRequest body);
+
     @GetExchange("/timeline/{idOrReference}")
     TimeLineResponse.Single viewTransactionTimeLine(@PathVariable String idOrReference);
+
     @GetExchange("/totals")
     TransactionTotalResponse.Single transactionTotals(
             @RequestParam(name = QueryParamConstants.PAGE) @NonNull BigInteger page,
@@ -46,6 +52,7 @@ public interface TransactionClient {
             @RequestParam(name = QueryParamConstants.FROM, required = false) ZonedDateTime from,
             @RequestParam(name = QueryParamConstants.TO, required = false) ZonedDateTime to
     );
+
     @GetExchange("/export")
     ExportTransactionResponse.Single exportTransactions(
             @RequestParam(name = QueryParamConstants.PAGE) @NonNull BigInteger page,
@@ -61,6 +68,7 @@ public interface TransactionClient {
             @RequestParam(name = QueryParamConstants.PAYMENT_PAGE, required = false) BigInteger paymentPage
 
     );
+
     @PostExchange("/partial_debit")
     TransactionTotalResponse.Single partialDebit(@RequestBody PartialDebitRequest body);
 }

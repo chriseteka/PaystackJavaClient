@@ -29,7 +29,7 @@ public interface ProductClient {
             @RequestParam(name = QueryParamConstants.PER_PAGE) @NonNull BigInteger perPage,
             @RequestParam(name = QueryParamConstants.FROM, required = false)ZonedDateTime from,
             @RequestParam(name = QueryParamConstants.TO, required = false)ZonedDateTime to
-            );
+    );
 
     @GetExchange("/{id}")
     Mono<ProductResponse.Single> fetchProduct(@PathVariable String id);
