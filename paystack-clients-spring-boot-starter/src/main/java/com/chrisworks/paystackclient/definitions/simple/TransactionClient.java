@@ -1,7 +1,8 @@
-package com.chrisworks.paystackclients.definitions;
+package com.chrisworks.paystackclient.definitions.simple;
 
 import com.chrisworks.paystackclient.domain.request.QueryParamConstants;
 import com.chrisworks.paystackclient.domain.transaction.*;
+import com.chrisworks.paystackclient.definitions.Constants;
 import com.maciejwalkowiak.spring.http.annotation.HttpClient;
 import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,8 +19,10 @@ public interface TransactionClient {
 
     @PostExchange("/initialize")
     InitTransactionResponse.Single initializeTransaction(@RequestBody InitTransactionRequest body);
+
     @GetExchange("/verify/{reference}")
     TransactionResponse.Single verifyTransaction(@PathVariable String reference);
+
     @GetExchange
     TransactionResponse.Multiple listTransaction(
             @RequestParam(name = QueryParamConstants.PAGE) @NonNull BigInteger page,
@@ -32,12 +35,16 @@ public interface TransactionClient {
             @RequestParam(name = QueryParamConstants.AMOUNT, required = false) String amount
 
     );
+
     @GetExchange("/{id}")
     TransactionResponse.Single fetchTransaction(@PathVariable BigInteger id);
+
     @PostExchange("/charge_authorization")
     TransactionTotalResponse.Single chargeAuthorization(@RequestBody ChargeAuthorizationRequest body);
+
     @GetExchange("/timeline/{idOrReference}")
     TimeLineResponse.Single viewTransactionTimeLine(@PathVariable String idOrReference);
+
     @GetExchange("/totals")
     TransactionTotalResponse.Single transactionTotals(
             @RequestParam(name = QueryParamConstants.PAGE) @NonNull BigInteger page,
@@ -45,6 +52,7 @@ public interface TransactionClient {
             @RequestParam(name = QueryParamConstants.FROM, required = false) ZonedDateTime from,
             @RequestParam(name = QueryParamConstants.TO, required = false) ZonedDateTime to
     );
+
     @GetExchange("/export")
     ExportTransactionResponse.Single exportTransactions(
             @RequestParam(name = QueryParamConstants.PAGE) @NonNull BigInteger page,
@@ -60,6 +68,7 @@ public interface TransactionClient {
             @RequestParam(name = QueryParamConstants.PAYMENT_PAGE, required = false) BigInteger paymentPage
 
     );
+
     @PostExchange("/partial_debit")
     TransactionTotalResponse.Single partialDebit(@RequestBody PartialDebitRequest body);
 }

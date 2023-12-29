@@ -1,5 +1,6 @@
-package com.chrisworks.paystackclients.definitions;
+package com.chrisworks.paystackclient.definitions.simple;
 
+import com.chrisworks.paystackclient.definitions.Constants;
 import com.chrisworks.paystackclient.domain.request.QueryParamConstants;
 import com.chrisworks.paystackclient.domain.subaccount.CreateSubaccountRequest;
 import com.chrisworks.paystackclient.domain.subaccount.SubaccountResponse;
@@ -16,14 +17,14 @@ import org.springframework.web.service.annotation.PutExchange;
 import java.math.BigInteger;
 import java.time.ZonedDateTime;
 
-@HttpClient(Constants.SUBACCOUNT_CLIENT)
-public interface SubaccountClient {
+@HttpClient(Constants.SUB_ACCOUNT_CLIENT)
+public interface SubAccountClient {
 
     @PostExchange
-    SubaccountResponse.Single createSubaccount(@RequestBody CreateSubaccountRequest body);
+    SubaccountResponse.Single createSubAccount(@RequestBody CreateSubaccountRequest body);
 
     @GetExchange
-    SubaccountResponse.Multiple listSubaccounts(
+    SubaccountResponse.Multiple listSubAccounts(
             @RequestParam(name = QueryParamConstants.PAGE) @NonNull BigInteger page,
             @RequestParam(name = QueryParamConstants.PER_PAGE) @NonNull BigInteger perPage,
             @RequestParam(name = QueryParamConstants.FROM, required = false) ZonedDateTime from,
@@ -31,8 +32,8 @@ public interface SubaccountClient {
     );
 
     @GetExchange("/{idOrCode}")
-    SubaccountResponse.Single fetchSubaccount(@PathVariable String idOrCode);
+    SubaccountResponse.Single fetchSubAccount(@PathVariable String idOrCode);
 
     @PutExchange("/{idOrCode}")
-    SubaccountResponse.Single updateSubaccount(@PathVariable String idOrCode, @RequestBody UpdateSubaccountRequest body);
+    SubaccountResponse.Single updateSubAccount(@PathVariable String idOrCode, @RequestBody UpdateSubaccountRequest body);
 }

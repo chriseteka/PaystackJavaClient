@@ -1,8 +1,9 @@
-package com.chrisworks.paystackclients.definitions;
+package com.chrisworks.paystackclient.definitions.simple;
 
 import com.chrisworks.paystackclient.domain.product.CreateOrUpdateProductRequest;
 import com.chrisworks.paystackclient.domain.product.ProductResponse;
 import com.chrisworks.paystackclient.domain.request.QueryParamConstants;
+import com.chrisworks.paystackclient.definitions.Constants;
 import com.maciejwalkowiak.spring.http.annotation.HttpClient;
 import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,7 +28,7 @@ public interface ProductClient {
             @RequestParam(name = QueryParamConstants.PER_PAGE) @NonNull BigInteger perPage,
             @RequestParam(name = QueryParamConstants.FROM, required = false)ZonedDateTime from,
             @RequestParam(name = QueryParamConstants.TO, required = false)ZonedDateTime to
-            );
+    );
 
     @GetExchange("/{id}")
     ProductResponse.Single fetchProduct(@PathVariable String id);

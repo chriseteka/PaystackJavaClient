@@ -1,9 +1,10 @@
-package com.chrisworks.paystackclients.definitions;
+package com.chrisworks.paystackclient.definitions.simple;
 
 import com.chrisworks.paystackclient.domain.applepay.ApplePayRequest;
 import com.chrisworks.paystackclient.domain.applepay.ApplePayResponse;
 import com.chrisworks.paystackclient.domain.request.QueryParamConstants;
 import com.chrisworks.paystackclient.domain.response.EmptyDataResponse;
+import com.chrisworks.paystackclient.definitions.Constants;
 import com.maciejwalkowiak.spring.http.annotation.HttpClient;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
