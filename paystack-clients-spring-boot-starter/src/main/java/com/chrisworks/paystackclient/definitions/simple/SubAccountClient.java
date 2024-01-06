@@ -2,9 +2,9 @@ package com.chrisworks.paystackclient.definitions.simple;
 
 import com.chrisworks.paystackclient.definitions.Constants;
 import com.chrisworks.paystackclient.domain.request.QueryParamConstants;
-import com.chrisworks.paystackclient.domain.subaccount.CreateSubaccountRequest;
-import com.chrisworks.paystackclient.domain.subaccount.SubaccountResponse;
-import com.chrisworks.paystackclient.domain.subaccount.UpdateSubaccountRequest;
+import com.chrisworks.paystackclient.domain.subaccount.CreateSubAccountRequest;
+import com.chrisworks.paystackclient.domain.subaccount.SubAccountResponse;
+import com.chrisworks.paystackclient.domain.subaccount.UpdateSubAccountRequest;
 import com.maciejwalkowiak.spring.http.annotation.HttpClient;
 import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,10 +21,10 @@ import java.time.ZonedDateTime;
 public interface SubAccountClient {
 
     @PostExchange
-    SubaccountResponse.Single createSubAccount(@RequestBody CreateSubaccountRequest body);
+    SubAccountResponse.Single createSubAccount(@RequestBody CreateSubAccountRequest body);
 
     @GetExchange
-    SubaccountResponse.Multiple listSubAccounts(
+    SubAccountResponse.Multiple listSubAccounts(
             @RequestParam(name = QueryParamConstants.PAGE) @NonNull BigInteger page,
             @RequestParam(name = QueryParamConstants.PER_PAGE) @NonNull BigInteger perPage,
             @RequestParam(name = QueryParamConstants.FROM, required = false) ZonedDateTime from,
@@ -32,8 +32,8 @@ public interface SubAccountClient {
     );
 
     @GetExchange("/{idOrCode}")
-    SubaccountResponse.Single fetchSubAccount(@PathVariable String idOrCode);
+    SubAccountResponse.Single fetchSubAccount(@PathVariable String idOrCode);
 
     @PutExchange("/{idOrCode}")
-    SubaccountResponse.Single updateSubAccount(@PathVariable String idOrCode, @RequestBody UpdateSubaccountRequest body);
+    SubAccountResponse.Single updateSubAccount(@PathVariable String idOrCode, @RequestBody UpdateSubAccountRequest body);
 }

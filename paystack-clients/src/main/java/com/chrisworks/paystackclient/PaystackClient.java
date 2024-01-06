@@ -10,7 +10,7 @@ public interface PaystackClient {
     PlanClient plan();
     TransactionClient transaction();
     ProductClient product();
-    SubaccountClient subaccount();
+    SubAccountClient subAccount();
 
     final class Impl extends WithConfiguredHttpClient implements PaystackClient {
         Impl(OkHttpClient httpClient) {
@@ -43,8 +43,8 @@ public interface PaystackClient {
         }
 
         @Override
-        public SubaccountClient subaccount() {
-            return new SubaccountClient.Impl(httpClient);
+        public SubAccountClient subAccount() {
+            return new SubAccountClient.Impl(httpClient);
         }
     }
 }
