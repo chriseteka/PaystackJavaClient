@@ -1,6 +1,5 @@
 package com.chrisworks.paystackclient.domain.subaccount;
 
-import com.chrisworks.paystackclient.domain.Email;
 import com.chrisworks.paystackclient.domain.response.PaystackMultiResponse;
 import com.chrisworks.paystackclient.domain.response.PaystackSingleResponse;
 
@@ -10,7 +9,7 @@ import java.time.ZonedDateTime;
 import java.util.List;
 
 public record SubAccountResponse(BigInteger integration, String domain, String subaccount_code, String business_name,
-                                 String description, String primary_contact_name, Email primary_contact_email,
+                                 String description, String primary_contact_name, String primary_contact_email,
                                  String primary_contact_phone, Object metadata, BigDecimal percentage_charge,
                                  boolean is_verified, String settlement_bank, String account_number,
                                  String settlement_schedule, boolean active, boolean migrate, BigInteger id,

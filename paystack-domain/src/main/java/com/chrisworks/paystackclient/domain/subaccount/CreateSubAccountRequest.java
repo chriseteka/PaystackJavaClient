@@ -2,13 +2,14 @@ package com.chrisworks.paystackclient.domain.subaccount;
 
 import com.chrisworks.paystackclient.domain.request.RequestBody;
 
-import java.math.BigDecimal;
+import java.util.List;
+import java.util.Map;
 
 public class CreateSubAccountRequest implements RequestBody<CreateSubAccountRequest> {
     private final String business_name;
     private final String settlement_bank;
     private final String account_number;
-    private final BigDecimal percentage_charge;
+    private final Double percentage_charge;
     private final String description;
     private String primary_contact_email;
     private String primary_contact_name;
@@ -16,7 +17,7 @@ public class CreateSubAccountRequest implements RequestBody<CreateSubAccountRequ
     private String metadata;
 
     public CreateSubAccountRequest(String businessName, String settlementBank, String accountNumber,
-                                   BigDecimal percentageCharge, String description) {
+                                   Double percentageCharge, String description) {
         this.business_name = businessName;
         this.settlement_bank = settlementBank;
         this.account_number = accountNumber;
@@ -36,7 +37,7 @@ public class CreateSubAccountRequest implements RequestBody<CreateSubAccountRequ
         return account_number;
     }
 
-    public BigDecimal getPercentageCharge() {
+    public Double getPercentageCharge() {
         return percentage_charge;
     }
 
@@ -75,8 +76,12 @@ public class CreateSubAccountRequest implements RequestBody<CreateSubAccountRequ
         return this;
     }
 
-    public CreateSubAccountRequest metadata(String metadata) {
-        this.metadata = metadata;
+    public CreateSubAccountRequest metadata(MetaData metadata) {
+        this.metadata = metadata.json();
         return this;
     }
+
+    public record MetaData(List<Map<String, Object>> custom_fields) implements RequestBody<MetaData> {
+    }
+
 }
