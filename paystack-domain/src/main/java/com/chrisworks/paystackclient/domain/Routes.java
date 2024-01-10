@@ -48,8 +48,8 @@ public final class Routes {
         public static final UnaryOperator<String> BY_ID = (BASE_URL + "/%s")::formatted;
     }
 
-    public static final class Subaccount {
-        private Subaccount(){}
+    public static final class SubAccount {
+        private SubAccount(){}
         public static final String BASE_URL = Routes.BASE_URL + "/subaccount";
         public static final UnaryOperator<String> BY_ID_OR_CODE = (BASE_URL + "/%s")::formatted;
     }

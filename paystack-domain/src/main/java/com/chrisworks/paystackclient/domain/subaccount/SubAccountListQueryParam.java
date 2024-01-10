@@ -6,22 +6,22 @@ import com.chrisworks.paystackclient.domain.request.QueryParamConstants;
 import java.math.BigInteger;
 import java.time.ZonedDateTime;
 
-public final class SubaccountListQueryParam extends PaystackListPagedQueryParam {
+public final class SubAccountListQueryParam extends PaystackListPagedQueryParam {
 
-    public SubaccountListQueryParam(BigInteger perPage, BigInteger page) {
+    public SubAccountListQueryParam(BigInteger perPage, BigInteger page) {
         super(perPage, page);
     }
 
-    public SubaccountListQueryParam(){
+    public SubAccountListQueryParam(){
         super();
     }
 
-    public SubaccountListQueryParam from(ZonedDateTime from){
+    public SubAccountListQueryParam from(ZonedDateTime from){
         params.put(QueryParamConstants.FROM, from.toString());
         return this;
     }
 
-    public SubaccountListQueryParam to(ZonedDateTime to){
+    public SubAccountListQueryParam to(ZonedDateTime to){
         params.put(QueryParamConstants.TO, to.toString());
         return this;
     }

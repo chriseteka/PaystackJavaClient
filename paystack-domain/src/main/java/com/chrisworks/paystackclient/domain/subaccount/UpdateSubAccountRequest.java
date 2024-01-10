@@ -4,7 +4,7 @@ import com.chrisworks.paystackclient.domain.request.RequestBody;
 
 import java.math.BigDecimal;
 
-public class UpdateSubaccountRequest implements RequestBody<UpdateSubaccountRequest> {
+public class UpdateSubAccountRequest implements RequestBody<UpdateSubAccountRequest> {
     private final String business_name;
     private final String settlement_bank;
     private boolean active;
@@ -17,7 +17,7 @@ public class UpdateSubaccountRequest implements RequestBody<UpdateSubaccountRequ
     private String settlement_schedule;
     private String metadata;
 
-    public UpdateSubaccountRequest(String businessName, String settlementBank) {
+    public UpdateSubAccountRequest(String businessName, String settlementBank) {
         this.business_name = businessName;
         this.settlement_bank = settlementBank;
     }
@@ -66,47 +66,47 @@ public class UpdateSubaccountRequest implements RequestBody<UpdateSubaccountRequ
         return settlement_schedule;
     }
 
-    public UpdateSubaccountRequest accountNumber(String accountNumber) {
+    public UpdateSubAccountRequest accountNumber(String accountNumber) {
         this.account_number = accountNumber;
         return this;
     }
 
-    public UpdateSubaccountRequest active(boolean active) {
+    public UpdateSubAccountRequest active(boolean active) {
         this.active = active;
         return this;
     }
 
-    public UpdateSubaccountRequest percentageCharge(BigDecimal percentageCharge) {
+    public UpdateSubAccountRequest percentageCharge(BigDecimal percentageCharge) {
         this.percentage_charge = percentageCharge;
         return this;
     }
 
-    public UpdateSubaccountRequest description(String description) {
+    public UpdateSubAccountRequest description(String description) {
         this.description = description;
         return this;
     }
 
-    public UpdateSubaccountRequest primaryContactEmail(String primaryContactEmail) {
+    public UpdateSubAccountRequest primaryContactEmail(String primaryContactEmail) {
         this.primary_contact_email = primaryContactEmail;
         return this;
     }
 
-    public UpdateSubaccountRequest primaryContactName(String primaryContactName) {
+    public UpdateSubAccountRequest primaryContactName(String primaryContactName) {
         this.primary_contact_name = primaryContactName;
         return this;
     }
 
-    public UpdateSubaccountRequest primaryContactPhone(String primaryContactPhone) {
+    public UpdateSubAccountRequest primaryContactPhone(String primaryContactPhone) {
         this.primary_contact_phone = primaryContactPhone;
         return this;
     }
 
-    public UpdateSubaccountRequest settlementSchedule(String settlementSchedule) {
+    public UpdateSubAccountRequest settlementSchedule(String settlementSchedule) {
         this.settlement_schedule = settlementSchedule;
         return this;
     }
 
-    public UpdateSubaccountRequest metadata(String metadata) {
+    public UpdateSubAccountRequest metadata(String metadata) {
         this.metadata = metadata;
         return this;
     }
