@@ -35,8 +35,8 @@ public interface SubAccountClient {
     SubAccountResponse.Multiple listSubAccounts();
 
     @GetExchange("/{idOrCode}")
-    SubAccountResponse.Single fetchSubAccount(@PathVariable String idOrCode);
+    SubAccountResponse.Single fetchSubAccount(@PathVariable(name = "idOrCode") String idOrCode);
 
     @PutExchange("/{idOrCode}")
-    SubAccountResponse.Single updateSubAccount(@PathVariable String idOrCode, @RequestBody UpdateSubAccountRequest body);
+    SubAccountResponse.Single updateSubAccount(@PathVariable(name = "idOrCode") String idOrCode, @RequestBody UpdateSubAccountRequest body);
 }

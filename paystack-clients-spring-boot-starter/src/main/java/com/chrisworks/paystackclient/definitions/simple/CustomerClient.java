@@ -34,13 +34,13 @@ public interface CustomerClient {
     CustomerResponse.Multiple listCustomers();
 
     @GetExchange("/{customerCode}")
-    DetailedCustomerResponse.Single fetchCustomer(@PathVariable String customerCode);
+    DetailedCustomerResponse.Single fetchCustomer(@PathVariable(name = "customerCode") String customerCode);
 
     @PutExchange("/{customerCode}")
-    DetailedCustomerResponse.Single updateCustomer(@PathVariable String customerCode, @RequestBody UpdateCustomerRequest body);
+    DetailedCustomerResponse.Single updateCustomer(@PathVariable(name = "customerCode") String customerCode, @RequestBody UpdateCustomerRequest body);
 
     @PostExchange("/{customerCode}/identification")
-    EmptyDataResponse validateCustomer(@PathVariable String customerCode, @RequestBody ValidateCustomerRequest body);
+    EmptyDataResponse validateCustomer(@PathVariable(name = "customerCode") String customerCode, @RequestBody ValidateCustomerRequest body);
 
     @PostExchange("/set_risk_action")
     CustomerResponse.Single whiteOrBlackListCustomer(@RequestBody WhiteOrBlackListCustomerRequest body);

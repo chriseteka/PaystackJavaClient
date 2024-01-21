@@ -35,13 +35,13 @@ public interface CustomerClient {
     Mono<CustomerResponse.Multiple> listCustomers();
 
     @GetExchange("/{customerCode}")
-    Mono<DetailedCustomerResponse.Single> fetchCustomer(@PathVariable String customerCode);
+    Mono<DetailedCustomerResponse.Single> fetchCustomer(@PathVariable(name = "customerCode") String customerCode);
 
     @PutExchange("/{customerCode}")
-    Mono<DetailedCustomerResponse.Single> updateCustomer(@PathVariable String customerCode, @RequestBody UpdateCustomerRequest body);
+    Mono<DetailedCustomerResponse.Single> updateCustomer(@PathVariable(name = "customerCode") String customerCode, @RequestBody UpdateCustomerRequest body);
 
     @PostExchange("/{customerCode}/identification")
-    Mono<EmptyDataResponse> validateCustomer(@PathVariable String customerCode, @RequestBody ValidateCustomerRequest body);
+    Mono<EmptyDataResponse> validateCustomer(@PathVariable(name = "customerCode") String customerCode, @RequestBody ValidateCustomerRequest body);
 
     @PostExchange("/set_risk_action")
     Mono<CustomerResponse.Single> whiteOrBlackListCustomer(@RequestBody WhiteOrBlackListCustomerRequest body);

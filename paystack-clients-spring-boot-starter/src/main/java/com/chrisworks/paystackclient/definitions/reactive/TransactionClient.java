@@ -22,7 +22,7 @@ public interface TransactionClient {
     Mono<InitTransactionResponse.Single> initializeTransaction(@RequestBody InitTransactionRequest body);
 
     @GetExchange("/verify/{reference}")
-    Mono<TransactionResponse.Single> verifyTransaction(@PathVariable String reference);
+    Mono<TransactionResponse.Single> verifyTransaction(@PathVariable(name = "reference") String reference);
 
     @GetExchange
     Mono<TransactionResponse.Multiple> listTransaction(
@@ -41,13 +41,13 @@ public interface TransactionClient {
     Mono<TransactionResponse.Multiple> listTransaction();
 
     @GetExchange("/{id}")
-    Mono<TransactionResponse.Single> fetchTransaction(@PathVariable BigInteger id);
+    Mono<TransactionResponse.Single> fetchTransaction(@PathVariable(name = "id") BigInteger id);
 
     @PostExchange("/charge_authorization")
     Mono<TransactionTotalResponse.Single> chargeAuthorization(@RequestBody ChargeAuthorizationRequest body);
 
     @GetExchange("/timeline/{idOrReference}")
-    Mono<TimeLineResponse.Single> viewTransactionTimeLine(@PathVariable String idOrReference);
+    Mono<TimeLineResponse.Single> viewTransactionTimeLine(@PathVariable(name = "idOrReference") String idOrReference);
 
     @GetExchange("/totals")
     Mono<TransactionTotalResponse.Single> transactionTotals(

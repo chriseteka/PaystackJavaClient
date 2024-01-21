@@ -36,8 +36,8 @@ public interface SubAccountClient {
     Mono<SubAccountResponse.Multiple> listSubAccounts();
 
     @GetExchange("/{idOrCode}")
-    Mono<SubAccountResponse.Single> fetchSubAccount(@PathVariable String idOrCode);
+    Mono<SubAccountResponse.Single> fetchSubAccount(@PathVariable(name = "idOrCode") String idOrCode);
 
     @PutExchange("/{idOrCode}")
-    Mono<SubAccountResponse.Single> updateSubAccount(@PathVariable String idOrCode, @RequestBody UpdateSubAccountRequest body);
+    Mono<SubAccountResponse.Single> updateSubAccount(@PathVariable(name = "idOrCode") String idOrCode, @RequestBody UpdateSubAccountRequest body);
 }

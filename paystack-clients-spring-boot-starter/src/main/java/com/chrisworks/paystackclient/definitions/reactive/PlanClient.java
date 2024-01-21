@@ -36,8 +36,8 @@ public interface PlanClient {
     Mono<PlanResponse.Multiple> listPlans();
 
     @GetExchange("/{idOrCode}")
-    Mono<PlanResponse.Single> fetchPlan(@PathVariable String idOrCode);
+    Mono<PlanResponse.Single> fetchPlan(@PathVariable(name = "idOrCode") String idOrCode);
 
     @PutExchange("/{idOrCode}")
-    Mono<PlanResponse.Single> updatePlan(@PathVariable String idOrCode, @RequestBody UpdatePlanRequest body);
+    Mono<PlanResponse.Single> updatePlan(@PathVariable(name = "idOrCode") String idOrCode, @RequestBody UpdatePlanRequest body);
 }

@@ -21,7 +21,7 @@ public interface TransactionClient {
     InitTransactionResponse.Single initializeTransaction(@RequestBody InitTransactionRequest body);
 
     @GetExchange("/verify/{reference}")
-    TransactionResponse.Single verifyTransaction(@PathVariable String reference);
+    TransactionResponse.Single verifyTransaction(@PathVariable(name = "reference") String reference);
 
     @GetExchange
     TransactionResponse.Multiple listTransaction(
@@ -40,13 +40,13 @@ public interface TransactionClient {
     TransactionResponse.Multiple listTransaction();
 
     @GetExchange("/{id}")
-    TransactionResponse.Single fetchTransaction(@PathVariable BigInteger id);
+    TransactionResponse.Single fetchTransaction(@PathVariable(name = "id") BigInteger id);
 
     @PostExchange("/charge_authorization")
     TransactionTotalResponse.Single chargeAuthorization(@RequestBody ChargeAuthorizationRequest body);
 
     @GetExchange("/timeline/{idOrReference}")
-    TimeLineResponse.Single viewTransactionTimeLine(@PathVariable String idOrReference);
+    TimeLineResponse.Single viewTransactionTimeLine(@PathVariable(name = "idOrReference") String idOrReference);
 
     @GetExchange("/totals")
     TransactionTotalResponse.Single transactionTotals(

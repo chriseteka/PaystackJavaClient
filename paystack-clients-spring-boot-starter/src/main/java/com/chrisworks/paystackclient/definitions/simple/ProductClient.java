@@ -34,8 +34,8 @@ public interface ProductClient {
     ProductResponse.Multiple listProducts();
 
     @GetExchange("/{id}")
-    ProductResponse.Single fetchProduct(@PathVariable String id);
+    ProductResponse.Single fetchProduct(@PathVariable(name = "id") String id);
 
     @PutExchange("/{id}")
-    ProductResponse.Single updateProduct(@PathVariable String id, @RequestBody CreateOrUpdateProductRequest body);
+    ProductResponse.Single updateProduct(@PathVariable(name = "id") String id, @RequestBody CreateOrUpdateProductRequest body);
 }

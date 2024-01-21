@@ -35,8 +35,8 @@ public interface ProductClient {
     Mono<ProductResponse.Multiple> listProducts();
 
     @GetExchange("/{id}")
-    Mono<ProductResponse.Single> fetchProduct(@PathVariable String id);
+    Mono<ProductResponse.Single> fetchProduct(@PathVariable(name = "id") String id);
 
     @PutExchange("/{id}")
-    Mono<ProductResponse.Multiple> updateProduct(@PathVariable String id);
+    Mono<ProductResponse.Multiple> updateProduct(@PathVariable(name = "id") String id);
 }
