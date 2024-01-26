@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.chrisworks.paystackclient</groupId>
+    <groupId>io.github.chriseteka.paystackclient</groupId>
     <artifactId>paystack-clients-spring-boot-starter</artifactId>
     <version>0.0.5-SNAPSHOT</version>
     <name>paystack-clients-spring-boot-starter</name>
@@ -23,7 +23,7 @@
             <version>${spring-boot-http-clients.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.chrisworks.paystackclient</groupId>
+            <groupId>io.github.chriseteka.paystackclient</groupId>
             <artifactId>paystack-domain</artifactId>
             <version>${project.version}</version>
         </dependency>

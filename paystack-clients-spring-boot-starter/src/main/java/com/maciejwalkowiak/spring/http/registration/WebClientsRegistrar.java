@@ -1,6 +1,6 @@
 package com.maciejwalkowiak.spring.http.registration;
 
-import com.chrisworks.paystackclient.SupportedClient;
+import io.github.chriseteka.paystackclient.SupportedClient;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.beans.factory.support.BeanNameGenerator;
@@ -16,7 +16,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static com.chrisworks.paystackclient.configs.PaystackClientsProperties.ACTIVATED_CLIENTS_PATH;
+import static io.github.chriseteka.paystackclient.configs.PaystackClientsProperties.ACTIVATED_CLIENTS_PATH;
 
 /**
  * Registers bean definitions for {@link WebClient}s defined in Spring {@link Environment} under prefix {@code "http.clients}.

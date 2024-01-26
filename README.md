@@ -26,7 +26,7 @@ The Client comes in 3 flavors:
 - Add the dependency to your spring boot project:
 ```xml 
 <dependency>
-    <groupId>com.chrisworks.paystackclient</groupId>
+    <groupId>io.github.chriseteka.paystackclient</groupId>
     <artifactId>paystack-clients-spring-boot-starter</artifactId>
     <version>${VERSION}</version>
 </dependency>
@@ -56,16 +56,16 @@ context to be injected. By listing clients you're interested in, you loose the p
 
 > 2. The property `paystack-client.definition-type` controls what kind (reactive or non-reactive) of webclient bean will be initialized during autoconfiguration.
 Hence, it determines the location of the bean(s) (the packages holding the beans) you can use (inject) within your application logic. When the value is set to `REACTIVE`,
-then you can inject clients from the package `com.chrisworks.paystackclient.definitions.reactive.*`, also the aggregate bean
+then you can inject clients from the package `io.github.chriseteka.paystackclient.definitions.reactive.*`, also the aggregate bean
 `ReactivePaystackClient` will be available to you. In the case where the property is set to `NON_REACTIVE`, then you can inject
-clients from the package `com.chrisworks.paystackclient.definitions.simple.*`, also `SimplePaystackClient` bean will be available.
+clients from the package `io.github.chriseteka.paystackclient.definitions.simple.*`, also `SimplePaystackClient` bean will be available.
 
 - Usage
 ```java
 // Imports here
 
-import com.chrisworks.paystackclient.definitions.simple.PlanClient; //When using the non-reactive type
-import com.chrisworks.paystackclient.definitions.reactive.PlanClient; //When using the reactive type
+import io.github.chriseteka.paystackclient.definitions.simple.PlanClient; //When using the non-reactive type
+import io.github.chriseteka.paystackclient.definitions.reactive.PlanClient; //When using the reactive type
 
 @Service
 class Example {
@@ -97,7 +97,7 @@ The implementation here is powered by the popular Spring WebClient which is part
 - Add the dependency to your project
 ```xml
 <dependency>
-  <groupId>com.chrisworks.paystackclient</groupId>
+  <groupId>io.github.chriseteka.paystackclient</groupId>
   <artifactId>paystack-clients</artifactId>
   <version>${VERSION}</version>
 </dependency>

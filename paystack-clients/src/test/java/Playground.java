@@ -1,21 +1,7 @@
-import com.chrisworks.paystackclient.PaystackClient;
-import com.chrisworks.paystackclient.PaystackClientConfiguration;
-import com.chrisworks.paystackclient.definitions.CustomerClient;
-import com.chrisworks.paystackclient.domain.Amount;
-import com.chrisworks.paystackclient.domain.Currency;
-import com.chrisworks.paystackclient.domain.Email;
-import com.chrisworks.paystackclient.domain.Interval;
-import com.chrisworks.paystackclient.domain.customer.CreateCustomerRequest;
-import com.chrisworks.paystackclient.domain.customer.DetailedCustomerResponse;
-import com.chrisworks.paystackclient.domain.customer.UpdateCustomerRequest;
-import com.chrisworks.paystackclient.domain.plan.PlanResponse;
-import com.chrisworks.paystackclient.domain.plan.UpdatePlanRequest;
-import com.chrisworks.paystackclient.domain.response.RichResponse;
-import com.chrisworks.paystackclient.domain.transaction.TransactionResponse;
-import com.chrisworks.paystackclient.domain.transaction.TransactionTotalResponse;
-
-import java.math.BigDecimal;
-import java.math.BigInteger;
+import io.github.chriseteka.paystackclient.PaystackClient;
+import io.github.chriseteka.paystackclient.PaystackClientConfiguration;
+import io.github.chriseteka.paystackclient.domain.customer.DetailedCustomerResponse;
+import io.github.chriseteka.paystackclient.domain.response.RichResponse;
 
 public class Playground {
 
