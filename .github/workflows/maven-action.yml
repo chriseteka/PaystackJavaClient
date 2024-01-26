@@ -67,7 +67,7 @@ jobs:
 
       - name: Step 7 - Publish Dependency
         if: contains(env.PUSH_PACKAGES, true)
-        uses: peter-evans/repository-dispatch@v2
+        uses: peter-evans/repository-dispatch@v3
         with:
           token: ${{ secrets.GH_PAT }}
           event-type: execute-publish
