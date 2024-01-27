@@ -13,7 +13,6 @@
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring-boot-http-clients.version>0.1.1</spring-boot-http-clients.version>
-        <distribution-repo.url>https://maven.pkg.github.com/chriseteka/paystackjavaclient</distribution-repo.url>
     </properties>
 
     <dependencies>
@@ -35,18 +34,10 @@
         </dependency>
     </dependencies>
 
-    <repositories>
-        <repository>
-            <id>github</id>
-            <url>${distribution-repo.url}</url>
-        </repository>
-    </repositories>
-
     <distributionManagement>
         <repository>
-            <id>github</id>
-            <name>GitHub Packages</name>
-            <url>${distribution-repo.url}</url>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
     </distributionManagement>
 

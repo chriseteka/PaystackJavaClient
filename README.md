@@ -12,16 +12,6 @@ The Client comes in 3 flavors:
 
 ## Setup
 
-1. Add GitHub Maven Package Repository to your POM
-```xml
-<repositories>
-    <repository>
-        <id>github</id>
-        <url>https://maven.pkg.github.com/chriseteka/paystackjavaclient</url>
-    </repository>
-</repositories>
-```
-
 ### 1. When Using SpringBoot
 - Add the dependency to your spring boot project:
 ```xml 
