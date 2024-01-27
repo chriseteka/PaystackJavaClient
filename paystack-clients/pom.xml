@@ -3,7 +3,7 @@
 
     <groupId>io.github.chriseteka.paystackclient</groupId>
     <artifactId>paystack-clients</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1-SNAPSHOT</version>
 
     <name>paystack-clients</name>
     <url>https://github.com/chriseteka/PaystackJavaClient</url>
