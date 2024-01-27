@@ -6,7 +6,7 @@ package io.github.chriseteka.paystackclient.domain.response;
  * @param status This is the status of the response
  * @param message This is the message attached to the response
  *
- * @apiNote This response contains no typed data. Hence, the data() field is always null.
+ * <br/>This response contains no typed data. Hence, the data() field is always null.
  */
 public record EmptyDataResponse(boolean status, String message) implements PaystackSingleResponse<Object> {
     @Override
