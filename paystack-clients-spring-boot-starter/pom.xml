@@ -5,8 +5,10 @@
     <groupId>io.github.chriseteka.paystackclient</groupId>
     <artifactId>paystack-clients-spring-boot-starter</artifactId>
     <version>1.0.0</version>
+
     <name>paystack-clients-spring-boot-starter</name>
-    <description>paystack-clients-spring-boot-starter</description>
+    <url>https://github.com/chriseteka/PaystackJavaClient</url>
+    <description>PaystackJavaClient Spring Boot Starter</description>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -40,5 +42,27 @@
             <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
     </distributionManagement>
+
+    <scm>
+        <connection>scm:git:${project.scm.url}</connection>
+        <developerConnection>scm:git:${project.scm.url}</developerConnection>
+        <url>https://github.com/chriseteka/PaystackJavaClient.git</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>https://www.opensource.org/licenses/mit-license.php</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>chriseteka</id>
+            <name>Christopher Eteka</name>
+        </developer>
+    </developers>
 
 </project>

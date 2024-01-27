@@ -3,8 +3,11 @@
 
     <groupId>io.github.chriseteka.paystackclient</groupId>
     <artifactId>paystack-domain</artifactId>
-    <name>paystack-domain</name>
     <version>1.0.0</version>
+
+    <name>paystack-domain</name>
+    <url>https://github.com/chriseteka/PaystackJavaClient</url>
+    <description>PaystackJavaClient Domain</description>
 
     <properties>
         <jackson.version>2.16.1</jackson.version>
@@ -32,4 +35,26 @@
             <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
     </distributionManagement>
+
+    <scm>
+        <connection>scm:git:${project.scm.url}</connection>
+        <developerConnection>scm:git:${project.scm.url}</developerConnection>
+        <url>https://github.com/chriseteka/PaystackJavaClient.git</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>https://www.opensource.org/licenses/mit-license.php</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>chriseteka</id>
+            <name>Christopher Eteka</name>
+        </developer>
+    </developers>
 </project>

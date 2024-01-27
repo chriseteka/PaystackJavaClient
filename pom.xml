@@ -6,6 +6,11 @@
     <artifactId>PaystackJavaClient</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>
+
+    <name>PaystackJavaClient - POM</name>
+    <url>https://github.com/chriseteka/PaystackJavaClient</url>
+    <description>Parent POM for PaystackJavaClient</description>
+
     <modules>
         <module>paystack-domain</module>
         <module>paystack-clients</module>
