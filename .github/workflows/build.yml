@@ -2,7 +2,12 @@ name: PaystackJavaClient Maven CI
 
 on:
   push:
-  workflow_dispatch:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+permissions:
+  contents: read
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
